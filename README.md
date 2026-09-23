@@ -24,15 +24,15 @@ plugins/ + .github/plugin/marketplace.json ← Lab 7 ── marketplace ──�
 
 | Lab | Topic | Repo | Time | Primary surface | Plan needed |
 |-----|-------|------|------|-----------------|-------------|
-| [0](#lab-0-prerequisites-and-setup) | Prerequisites and setup | `common-agents` | 5 min | VS Code, CLI, Copilot app | Any paid plan |
-| [1](#lab-1-custom-instructions) | Custom instructions | `iphone-duo-viewer` | 10 min | Copilot app, GitHub.com | Any paid plan (org exercise: Business or Enterprise) |
-| [2](#lab-2-prompt-files) | Prompt files | `common-agents` | 5 min | VS Code | Any paid plan |
-| [3](#lab-3-agent-skills) | Agent skills | `common-agents` | 5 min | CLI, Copilot app | Any paid plan |
-| [4](#lab-4-custom-agents) | Custom agents and orchestration | `common-agents` | 10 min | CLI, Copilot app, GitHub.com | Org exercise: Enterprise |
-| [5](#lab-5-mcp-servers) | MCP servers | `iphone-duo-viewer` | 5 min | CLI, Copilot app | Any paid plan (org MCP policy must allow it) |
-| [6](#lab-6-hooks) | Hooks | `iphone-duo-viewer` | 10 min | CLI, cloud agent | Any paid plan |
-| [7](#lab-7-plugins) | Plugins and marketplace | `common-agents` | 10 min | CLI, Copilot app | Any paid plan |
-| [8](#lab-8-keystone-iphone-duo-knolling-viewer) | Keystone: iPhone Duo knolling viewer | `iphone-duo-viewer` | 30+ min | Copilot app | Any paid plan |
+| [0](#lab-0-prerequisites-and-setup) | Prerequisites and setup | `common-agents` | - | VS Code, CLI, Copilot app | Any paid plan |
+| [1](#lab-1-custom-instructions) | Custom instructions | `iphone-duo-viewer` | - | Copilot app, GitHub.com | Any paid plan (org exercise: Business or Enterprise) |
+| [2](#lab-2-prompt-files) | Prompt files | `common-agents` | - | VS Code | Any paid plan |
+| [3](#lab-3-agent-skills) | Agent skills | `common-agents` | - | CLI, Copilot app | Any paid plan |
+| [4](#lab-4-custom-agents) | Custom agents and orchestration | `common-agents` | - | CLI, Copilot app, GitHub.com | Org exercise: Enterprise |
+| [5](#lab-5-mcp-servers) | MCP servers | `iphone-duo-viewer` | - | CLI, Copilot app | Any paid plan (org MCP policy must allow it) |
+| [6](#lab-6-hooks) | Hooks | `iphone-duo-viewer` | - | CLI, cloud agent | Any paid plan |
+| [7](#lab-7-plugins) | Plugins and marketplace | `common-agents` | - | CLI, Copilot app | Any paid plan |
+| [8](#lab-8-keystone-iphone-duo-knolling-viewer) | Keystone: iPhone Duo knolling viewer | `iphone-duo-viewer` | - | Copilot app | Any paid plan |
 
 **Conventions used in this guide**
 
