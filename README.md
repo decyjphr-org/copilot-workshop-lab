@@ -36,6 +36,10 @@ plugins/ + .github/plugin/marketplace.json ← Lab 7 ── marketplace ──�
 
 **Conventions used in this guide**
 
+> [!important]
+> Replace `WORKSHOP-ORG` with `decyjphr-org`
+>
+
 * Placeholders are in `CAPS`. Replace them with your own values:
   * `YOUR-ORG` is an organization or user account where you can push.
   * `YOUR-USER` is your local macOS or Linux user name (for absolute paths).
