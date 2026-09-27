@@ -231,20 +231,20 @@ The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (proje
 
 1. 🚀 **Stretch goal:** Keep personal agents out of the team repo.
 
-   <details>
-   <summary>Show how to keep local agents out of commits</summary>
+<details>
+<summary>Show how to keep local agents out of commits</summary>
 
-   Any agent you save to `~/.copilot/agents` is now written into `common-agents/.github/agents`. Give personal agents a `my-` prefix and tell Git to ignore them:
+Any agent you save to `~/.copilot/agents` is now written into `common-agents/.github/agents`. Give personal agents a `my-` prefix and tell Git to ignore them:
 
-   ```bash
-   echo '.github/agents/my-*.agent.md' >> ~/projects/common-agents/.gitignore
-   ```
+```bash
+echo '.github/agents/my-*.agent.md' >> ~/projects/common-agents/.gitignore
+```
 
-   If you backed up any agents in step 1, move them back with a `my-` prefix, for example `mv ~/.copilot/agents.bak/reviewer.agent.md ~/.copilot/agents/my-reviewer.agent.md`.
+If you backed up any agents in step 1, move them back with a `my-` prefix, for example `mv ~/.copilot/agents.bak/reviewer.agent.md ~/.copilot/agents/my-reviewer.agent.md`.
 
-   </details>
+</details>
 
-1. Restart the CLI whenever you add or change an agent.
+4. Restart the CLI whenever you add or change an agent.
 
 > [!WARNING]
 > The docs list both agent locations, but they don't mention symbolic links. If the agents don't appear, remove the link (`rm ~/.copilot/agents`), create a normal folder, and copy the `.agent.md` files into it instead. Lab 7 replaces this step with a plugin.
@@ -1498,8 +1498,10 @@ You'll **move** the files, not copy them. If the same skill is loaded from both 
 
 **Discussion:** `common-agents` now works in two ways. `.github/skills` and `.github/agents` are where you incubate new work, loaded for you through `skillDirectories` and links. `plugins/` holds reviewed, versioned releases that anyone installs from the marketplace. When an incubating skill is ready, move it into the plugin, bump `version`, and push. Subscribers pick it up with `copilot plugin update`.
 
+### 🚀 **Stretch goals**
+
 <details>
-<summary>🚀 Stretch goals: publish a second plugin or auto-install</summary>
+<summary>Publish a second plugin or auto-install it for contributors</summary>
 
 * **Publish a second plugin.** Package the four instruction-generator skills as `instructions-kit`: `root-instructions`, `area-instructions`, `nested-hub`, and `nested-detail`. Move them into `plugins/instructions-kit/skills/`, add a `plugin.json`, and add a second entry to the `plugins` array in `marketplace.json`. Subscribers can then install just the kit they need. Before you publish, check the skills against the Exercise 2.1 authoring rules. For example, `root-instructions` has a `tools` field and mentions VS Code-only tools.
 * **Auto-install for contributors.** Add the marketplace and plugin to the viewer repo's `.github/copilot/settings.json` with `extraKnownMarketplaces` and `enabledPlugins`, so every contributor gets the kit automatically. See [Configuration file settings](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-config-dir-reference#configuration-file-settings) for the exact format.
@@ -1606,8 +1608,10 @@ Everything should already be in place. Confirm it in a CLI session in the viewer
 
 </details>
 
+### 🚀 **Stretch goals**
+
 <details>
-<summary>🚀 Stretch goals: extend the knolling viewer</summary>
+<summary>Extend the knolling viewer</summary>
 
 * Add an `agentStop` hook that returns `{"decision": "block", "reason": "..."}` until an automated check passes (for example, a Playwright script that confirms no two knolled parts overlap). The CLI stops forcing more turns after 8 consecutive blocks.
 * Add an open and closed fold animation using the hinge.
