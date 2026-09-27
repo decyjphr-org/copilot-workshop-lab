@@ -58,7 +58,7 @@ plugins/ + .github/plugin/marketplace.json ← Lab 7 ── marketplace ──�
 
 ### Exercise 0.1: Verify your plan tier
 
-1. Go to **github.com → Settings → Billing and licensing**.
+1. Go to [**github.com → Settings → Billing and licensing**](https://github.com/settings/copilot/features).
 1. Under "GitHub Copilot", note the plan name and the license source (personal or granted by an organization).
 1. If an organization grants your license, ask an organization or enterprise owner to confirm the plan tier in **Org Settings → Copilot → Policies**.
 
