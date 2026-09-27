@@ -101,7 +101,7 @@ Your workshop laptop already has VS Code (with the GitHub Copilot extension), Gi
    ```
 
 <details>
-<summary>🚀 Stretch goal (optional)</summary>
+<summary>🚀 Stretch goal: use the Copilot CLI</summary>
 
 #### 🚀 **Stretch goal** Option B: Copilot CLI
 
@@ -127,7 +127,7 @@ Your workshop laptop already has VS Code (with the GitHub Copilot extension), Gi
 </details>
 
 <details>
-<summary>🚀 Stretch goal (optional)</summary>
+<summary>🚀 Stretch goal: use the Copilot app</summary>
 
 #### 🚀 **Stretch goal** Option C: GitHub Copilot app
 
@@ -163,7 +163,7 @@ common-agents/
 ```
 
 <details>
-<summary>🚀 Stretch goal (optional)</summary>
+<summary>🚀 Stretch goal: explore the shared repository</summary>
 
 #### 🚀 **Stretch goal** Explore further
 Spend five minutes reading the files. Look for:
@@ -250,7 +250,7 @@ The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (proje
 > The docs list both agent locations, but they don't mention symbolic links. If the agents don't appear, remove the link (`rm ~/.copilot/agents`), create a normal folder, and copy the `.agent.md` files into it instead. Lab 7 replaces this step with a plugin.
 
 <details>
-<summary>🚀 Stretch goal (optional)</summary>
+<summary>🚀 Stretch goal: share instruction files</summary>
 
 #### 🚀 **Stretch goal:** Step 3 (optional): Share instruction files
 
@@ -357,7 +357,7 @@ export COPILOT_CUSTOM_INSTRUCTIONS_DIRS=/Users/YOUR-USER/projects/common-agents/
    ```
 
 <details>
-<summary>🚀 Stretch goal (optional)</summary>
+<summary>🚀 Stretch goal: use Copilot to create the file</summary>
 
 #### 🚀 **Stretch goal** Use Copilot to create the file
 
@@ -458,7 +458,7 @@ There's no code yet, so `/init create a custom instruction with the following` h
 ✅ **Checkpoint:** `copilot instruction` lists `.github/copilot-instructions.md` and both `*.instructions.md` files, and the scaffold follows the rules in them.
 
 <details>
-<summary>🚀 Stretch goal (optional)</summary>
+<summary>🚀 Stretch goal: improve instructions with /init</summary>
 
 ### 🚀 **Stretch goal:** Exercise 1.5: Improve the instructions with `/init` and `root-instructions`
 
@@ -515,7 +515,7 @@ The app reads project settings from `.github/github-app.yml`. This file is for t
 </details>
 
 <details>
-<summary>🚀 Stretch goal (optional)</summary>
+<summary>🚀 Stretch goal: add personal custom instructions</summary>
 
 ### 🚀 **Stretch goal:** Exercise 1.7: Add personal custom instructions
 
@@ -554,7 +554,7 @@ Personal instructions follow you across repositories.
 </details>
 
 <details>
-<summary>🚀 Stretch goal (optional)</summary>
+<summary>🚀 Stretch goal: add organization custom instructions</summary>
 
 ### 🚀 **Stretch goal:** Exercise 1.8: Add organization custom instructions (organization owners)
 
@@ -688,7 +688,7 @@ Open `~/projects/common-agents` in VS Code before you start.
 > Tool names vary between VS Code versions. If `terminal` isn't recognized, use the **Configure Tools** picker in the prompt file editor to insert valid tool names.
 
 <details>
-<summary>🚀 Stretch goal (optional)</summary>
+<summary>🚀 Stretch goal: create an issue summarizer</summary>
 
 ### 🚀 **Stretch goal:** Exercise 2.3: Create an issue summarizer with input variables
 
@@ -733,7 +733,7 @@ Look closely at the order of the issues in the output from Exercise 2.3.
 ✅ **Checkpoint:** You can explain when a task needs a prompt file and when it needs a skill with a script. You'll build this skill in Exercise 3.2.
 
 <details>
-<summary>🚀 Stretch goal (optional)</summary>
+<summary>🚀 Stretch goal: turn the review prompt into a shared skill</summary>
 
 ### 🚀 **Stretch goal:** Exercise 2.5: Turn the review prompt into a shared skill
 
@@ -926,7 +926,7 @@ Now fix the sort-order problem from Exercise 2.4 with a skill whose script does 
 > Always preview third-party skills before you install them. Don't pre-approve `shell` or `bash` in `allowed-tools` for a skill unless you've reviewed its scripts and trust the source.
 
 <details>
-<summary>🚀 Stretch goal (optional)</summary>
+<summary>🚀 Stretch goal: try the preloaded js-to-typescript skill</summary>
 
 Use the preloaded `js-to-typescript` skill (from `.claude/skills`) on a small JavaScript project, and check with `/skills info js-to-typescript` which location it loaded from.
 
@@ -969,7 +969,7 @@ The preloaded `code-explainer` agent says "Do not edit code", but it has no `too
 ✅ **Checkpoint:** The explanation includes a Mermaid diagram, and the agent refuses, or isn't able, to edit files when you ask it to fix bugs.
 
 <details>
-<summary>🚀 Stretch goal (optional)</summary>
+<summary>🚀 Stretch goal: create a readme-specialist team agent</summary>
 
 ### 🚀 **Stretch goal:** Exercise 4.2: Create a `readme-specialist` team agent
 
@@ -1001,7 +1001,7 @@ The preloaded `code-explainer` agent says "Do not edit code", but it has no `too
 </details>
 
 <details>
-<summary>🚀 Stretch goal (optional)</summary>
+<summary>🚀 Stretch goal: create a personal agent</summary>
 
 ### 🚀 **Stretch goal:** Exercise 4.3: Create a personal agent
 
@@ -1048,7 +1048,7 @@ Repository:   .github/agents/reviewer.agent.md  ← wins
 </details>
 
 <details>
-<summary>🚀 Stretch goal (optional)</summary>
+<summary>🚀 Stretch goal: design a multi-agent handoff</summary>
 
 ### 🚀 **Stretch goal:** Exercise 4.4: Design a multi-agent handoff
 
@@ -1162,7 +1162,7 @@ This exercise reuses the personal instructions from Exercise 1.7.
 > MCP servers configured for a repository or for the CLI are also available in the Copilot app. If Context7 can't connect in the app, the app may not see your shell's environment variables. Start the app from a terminal with `copilot app`.
 
 <details>
-<summary>🚀 Stretch goal (optional)</summary>
+<summary>🚀 Stretch goal: check the viewer with Playwright</summary>
 
 ### 🚀 **Stretch goal:** Exercise 5.3: Check the viewer with the built-in Playwright server
 
@@ -1332,7 +1332,7 @@ gh repo create YOUR-ORG/iphone-duo-viewer --private --source=. --remote=origin -
 </details>
 
 <details>
-<summary>🚀 Stretch goal (optional)</summary>
+<summary>🚀 Stretch goal: add a session or agent hook</summary>
 
 Add a `sessionStart` hook that logs the start time to `logs/session.log`, or an `agentStop` hook that plays a sound when the agent finishes.
 
@@ -1510,7 +1510,7 @@ Apple announced the iPhone Duo at Apple Park on September 9, 2026, alongside the
 The Tech Specs page also covers the chip, cameras, battery, modem, and a diagram of the buttons and connectors.
 
 <details>
-<summary>🚀 Stretch goal (optional)</summary>
+<summary>🚀 Stretch goal: check your setup</summary>
 
 ### 🚀 **Stretch goal:** Exercise 8.1: Check your setup (10 min)
 
@@ -1570,7 +1570,7 @@ Everything should already be in place. Confirm it in a CLI session in the viewer
 * [ ] `npm test` passes.
 
 <details>
-<summary>🚀 Stretch goal (optional)</summary>
+<summary>🚀 Stretch goal: review and ship</summary>
 
 ### 🚀 **Stretch goal:** Exercise 8.3: Review and ship (15 min)
 
