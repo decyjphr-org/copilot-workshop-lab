@@ -100,8 +100,10 @@ Your workshop laptop already has VS Code (with the GitHub Copilot extension), Gi
    cd common-agents
    ```
 
+#### 🚀 **Stretch goal** Option B: Copilot CLI
+
 <details>
-<summary>🚀 Stretch goal: Option B — Copilot CLI</summary>
+<summary>Show stretch-goal instructions</summary>
 
 1. Start the CLI in your projects folder:
 
@@ -124,8 +126,10 @@ Your workshop laptop already has VS Code (with the GitHub Copilot extension), Gi
 
 </details>
 
+#### 🚀 **Stretch goal** Option C: GitHub Copilot app
+
 <details>
-<summary>🚀 Stretch goal: Option C — Copilot app</summary>
+<summary>Show stretch-goal instructions</summary>
 
 1. Fork `WORKSHOP-ORG/common-agents` into `YOUR-ORG` using the GitHub UI.
 1. In the app sidebar, click **+** next to **Projects**.
@@ -158,8 +162,10 @@ common-agents/
         └── js-to-typescript/                # a skill in the Claude-compatible location
 ```
 
+#### 🚀 **Stretch goal** Explore further
+
 <details>
-<summary>🚀 Stretch goal: explore the shared repository</summary>
+<summary>Show stretch-goal instructions</summary>
 
 Spend five minutes reading the files. Look for:
 
@@ -226,7 +232,7 @@ The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (proje
 1. 🚀 Stretch goal: keep personal agents out of the team repo.
 
    <details>
-   <summary>Show the steps</summary>
+   <summary>Show stretch-goal instructions</summary>
 
    Any agent you save to `~/.copilot/agents` is now written into `common-agents/.github/agents`. Give personal agents a `my-` prefix and tell Git to ignore them:
 
@@ -243,8 +249,10 @@ The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (proje
 > [!WARNING]
 > The docs list both agent locations, but they don't mention symbolic links. If the agents don't appear, remove the link (`rm ~/.copilot/agents`), create a normal folder, and copy the `.agent.md` files into it instead. Lab 7 replaces this step with a plugin.
 
+#### 🚀 **Stretch goal:** Step 3 (optional): Share instruction files
+
 <details>
-<summary>🚀 Stretch goal: share instruction files</summary>
+<summary>Show stretch-goal instructions</summary>
 
 If `common-agents` has a folder of shared `*.instructions.md` files, add it to your shell profile:
 
@@ -348,8 +356,10 @@ export COPILOT_CUSTOM_INSTRUCTIONS_DIRS=/Users/YOUR-USER/projects/common-agents/
    - Keep modules small: scene setup, parts, layout (exploded and knolling), and UI.
    ```
 
+#### 🚀 **Stretch goal** Use Copilot to create the file
+
 <details>
-<summary>🚀 Stretch goal: use Copilot to create the file</summary>
+<summary>Show stretch-goal instructions</summary>
 
 There's no code yet, so `/init create a custom instruction with the following` has nothing to analyze. Write the instructions first to describe the project you *intend* to build.
 
