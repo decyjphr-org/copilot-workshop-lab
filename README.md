@@ -229,7 +229,7 @@ The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (proje
    # ~/.copilot/agents -> /Users/YOUR-USER/projects/common-agents/.github/agents
    ```
 
-1. 🚀 Stretch goal: keep personal agents out of the team repo.
+1. 🚀 **Stretch goal:** Keep personal agents out of the team repo.
 
    <details>
    <summary>Show stretch-goal instructions</summary>
@@ -286,8 +286,10 @@ export COPILOT_CUSTOM_INSTRUCTIONS_DIRS=/Users/YOUR-USER/projects/common-agents/
 > [!NOTE]
 > VS Code reads personal skills and agents from `~/.copilot/skills` and `~/.copilot/agents`, so the linked agents appear there. The VS Code docs don't mention `skillDirectories`. For the `iphone-duo-viewer` labs, use the CLI or the Copilot app, which do read it.
 
+### 🧯 **Troubleshooting (Lab 0)**
+
 <details>
-<summary>🧯 Troubleshooting (Lab 0)</summary>
+<summary>Show troubleshooting tips</summary>
 
 * **VS Code says you have no Copilot license.** Sign out and sign in again with the account that holds the license.
 * **The CLI rejects your token.** Classic personal access tokens (`ghp_`) aren't supported. Use `/login`, or a fine-grained PAT with the **Copilot Requests** permission in `COPILOT_GITHUB_TOKEN`.
@@ -585,8 +587,10 @@ Personal instructions follow you across repositories.
 
 </details>
 
+### 🧯 **Troubleshooting (Lab 1)**
+
 <details>
-<summary>🧯 Troubleshooting (Lab 1)</summary>
+<summary>Show troubleshooting tips</summary>
 
 * **A path-specific file never loads.** Without `applyTo`, the file isn't applied automatically. Check that the glob matches the file being edited.
 * **Copilot ignores part of a long file.** Instruction files over about 1,000 lines risk silent truncation. Split them by domain.
@@ -890,8 +894,10 @@ Now fix the sort-order problem from Exercise 2.4 with a skill whose script does 
 
 ✅ **Checkpoint:** The summaries appear in the same order as the script's output, and the skill also loads from the viewer repo through `skillDirectories`.
 
+### 🧯 **Troubleshooting (Lab 3)**
+
 <details>
-<summary>🧯 Troubleshooting (Lab 3)</summary>
+<summary>Show troubleshooting tips</summary>
 
 * **The skill doesn't load.** The `name` must be 1–64 characters of lowercase letters, numbers, and hyphens, and must match the directory name exactly.
 * **Copilot doesn't pick the skill automatically.** At first, only `name` and `description` load. Make the description specific about when to use the skill.
@@ -1104,8 +1110,10 @@ This exercise reuses the personal instructions from Exercise 1.7.
 
 ✅ **Checkpoint:** The parser is a TypeScript command-line program, and the response follows your plain-language rules. Run it on the log from your Exercise 4.4 coordinator run and paste the Mermaid output into a Markdown preview.
 
+### 🧯 **Troubleshooting (Lab 4)**
+
 <details>
-<summary>🧯 Troubleshooting (Lab 4)</summary>
+<summary>Show troubleshooting tips</summary>
 
 * **Your agent doesn't show up.** Check that the file ends in `.agent.md`, that `ls -l ~/.copilot/agents` shows the link to `common-agents/.github/agents`, and that you restarted the CLI. For org agents, check that the file is on the default branch.
 * **An agent is listed twice inside `common-agents`.** In that repo, the same files load as project agents and, through the link, as personal agents. The project copy takes precedence. Outside `common-agents`, each agent loads once.
@@ -1184,8 +1192,10 @@ The CLI includes a built-in `playwright` MCP server for browser automation. You 
 
 </details>
 
+### 🧯 **Troubleshooting (Lab 5)**
+
 <details>
-<summary>🧯 Troubleshooting (Lab 5)</summary>
+<summary>Show troubleshooting tips</summary>
 
 * **The server doesn't appear.** Business and Enterprise organizations need the **MCP servers in Copilot** policy turned on. It's off by default.
 * **The server is blocked.** Your organization may use an MCP registry allowlist. Only servers on the allowlist can run.
@@ -1324,8 +1334,10 @@ gh repo create YOUR-ORG/iphone-duo-viewer --private --source=. --remote=origin -
 
 ✅ **Checkpoint:** The logs show the denied tool calls and your denial reasons.
 
+### 🧯 **Troubleshooting (Lab 6)**
+
 <details>
-<summary>🧯 Troubleshooting (Lab 6)</summary>
+<summary>Show troubleshooting tips</summary>
 
 * **Hooks don't run.** Check that the file is in `.github/hooks/`, that it's valid JSON (`jq . .github/hooks/guardrails.json`), that it has `"version": 1`, and that the scripts are executable and have a shebang.
 * **The guard didn't block anything.** Timeouts **fail open**: if the hook takes longer than `timeoutSec`, the tool call continues. Keep the guard well under 10 seconds.
