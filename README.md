@@ -447,10 +447,10 @@ There's no code yet, so `/init create a custom instruction with the following` h
 
 ✅ **Checkpoint:** `copilot instruction` lists `.github/copilot-instructions.md` and both `*.instructions.md` files, and the scaffold follows the rules in them.
 
-<details>
-<summary>🚀 Stretch goal: refine instructions with /init</summary>
-
 ### 🚀 **Stretch goal:** Exercise 1.5: Improve the instructions with `/init` and `root-instructions`
+
+<details>
+<summary>Show stretch-goal instructions</summary>
 
 Now that the repo has code, let Copilot compare the instructions with it. You'll try the built-in command and your team's skill, and compare the two.
 
@@ -478,10 +478,10 @@ Use the `nested-hub` skill to generate a lean `AGENTS.md` hub for the viewer, th
 
 </details>
 
-<details>
-<summary>🧯 Troubleshooting (Exercise 1.6)</summary>
-
 ### 🧯 **Troubleshooting** Exercise 1.6: If the app doesn't open in a browser, configure it to run the viewer
+
+<details>
+<summary>Show troubleshooting steps</summary>
 
 The app reads project settings from `.github/github-app.yml`. This file is for the Copilot app only; it isn't a custom instructions file.
 
@@ -509,10 +509,10 @@ The app reads project settings from `.github/github-app.yml`. This file is for t
 
 </details>
 
-<details>
-<summary>🚀 Stretch goal: add personal custom instructions</summary>
-
 ### 🚀 **Stretch goal:** Exercise 1.7: Add personal custom instructions
+
+<details>
+<summary>Show stretch-goal instructions</summary>
 
 Personal instructions follow you across repositories.
 
@@ -548,10 +548,10 @@ Personal instructions follow you across repositories.
 
 </details>
 
-<details>
-<summary>🚀 Stretch goal: add organization custom instructions</summary>
-
 ### 🚀 **Stretch goal:** Exercise 1.8: Add organization custom instructions (organization owners)
+
+<details>
+<summary>Show stretch-goal instructions</summary>
 
 1. Go to your organization, then **Settings**.
 1. In the left sidebar, click **Copilot**, then **Custom instructions**.
@@ -682,10 +682,10 @@ Open `~/projects/common-agents` in VS Code before you start.
 > [!TIP]
 > Tool names vary between VS Code versions. If `terminal` isn't recognized, use the **Configure Tools** picker in the prompt file editor to insert valid tool names.
 
-<details>
-<summary>🚀 Stretch goal: create an issue summarizer with input variables</summary>
-
 ### 🚀 **Stretch goal:** Exercise 2.3: Create an issue summarizer with input variables
+
+<details>
+<summary>Show stretch-goal instructions</summary>
 
 This prompt reads issues through the GitHub MCP server, so make sure the server is enabled in VS Code.
 
@@ -727,10 +727,10 @@ Look closely at the order of the issues in the output from Exercise 2.3.
 
 ✅ **Checkpoint:** You can explain when a task needs a prompt file and when it needs a skill with a script. You'll build this skill in Exercise 3.2.
 
-<details>
-<summary>🚀 Stretch goal: turn the review prompt into a shared skill</summary>
-
 ### 🚀 **Stretch goal:** Exercise 2.5: Turn the review prompt into a shared skill
+
+<details>
+<summary>Show stretch-goal instructions</summary>
 
 `/review-code` only works in VS Code, and only while `common-agents` is the open workspace. As a skill, it works in the CLI, the Copilot app, and the cloud agent. Because of `skillDirectories`, it also works in every repository.
 
@@ -963,10 +963,10 @@ The preloaded `code-explainer` agent says "Do not edit code", but it has no `too
 
 ✅ **Checkpoint:** The explanation includes a Mermaid diagram, and the agent refuses, or isn't able, to edit files when you ask it to fix bugs.
 
-<details>
-<summary>🚀 Stretch goal: create a readme-specialist team agent</summary>
-
 ### 🚀 **Stretch goal:** Exercise 4.2: Create a `readme-specialist` team agent
+
+<details>
+<summary>Show stretch-goal instructions</summary>
 
 1. Create `~/projects/common-agents/.github/agents/readme-specialist.agent.md`:
 
@@ -995,10 +995,10 @@ The preloaded `code-explainer` agent says "Do not edit code", but it has no `too
 
 </details>
 
-<details>
-<summary>🚀 Stretch goal: create a personal agent</summary>
-
 ### 🚀 **Stretch goal:** Exercise 4.3: Create a personal agent
+
+<details>
+<summary>Show stretch-goal instructions</summary>
 
 A personal agent is just for you. You save it to `~/.copilot/agents/`, which is linked to `common-agents/.github/agents`. The `my-` prefix matches the `.gitignore` rule from Exercise 0.4, so the file stays on your machine and never gets committed to the team repo.
 
@@ -1042,10 +1042,10 @@ Repository:   .github/agents/reviewer.agent.md  ← wins
 
 </details>
 
-<details>
-<summary>🚀 Stretch goal: design a multi-agent handoff</summary>
-
 ### 🚀 **Stretch goal:** Exercise 4.4: Design a multi-agent handoff
+
+<details>
+<summary>Show stretch-goal instructions</summary>
 
 1. Draw this workflow for a real viewer feature, such as "Add a hinge fold animation":
 
@@ -1156,10 +1156,10 @@ This exercise reuses the personal instructions from Exercise 1.7.
 > [!TIP]
 > MCP servers configured for a repository or for the CLI are also available in the Copilot app. If Context7 can't connect in the app, the app may not see your shell's environment variables. Start the app from a terminal with `copilot app`.
 
-<details>
-<summary>🚀 Stretch goal: check the viewer with Playwright</summary>
-
 ### 🚀 **Stretch goal:** Exercise 5.3: Check the viewer with the built-in Playwright server
+
+<details>
+<summary>Show stretch-goal instructions</summary>
 
 The CLI includes a built-in `playwright` MCP server for browser automation. You don't need to configure it.
 
@@ -1504,10 +1504,10 @@ Apple announced the iPhone Duo at Apple Park on September 9, 2026, alongside the
 
 The Tech Specs page also covers the chip, cameras, battery, modem, and a diagram of the buttons and connectors.
 
-<details>
-<summary>🚀 Stretch goal: check your setup</summary>
-
 ### 🚀 **Stretch goal:** Exercise 8.1: Check your setup (10 min)
+
+<details>
+<summary>Show stretch-goal instructions</summary>
 
 Everything should already be in place. Confirm it in a CLI session in the viewer repo:
 
@@ -1564,10 +1564,10 @@ Everything should already be in place. Confirm it in a CLI session in the viewer
 * [ ] Every mesh is named after the part it represents.
 * [ ] `npm test` passes.
 
-<details>
-<summary>🚀 Stretch goal: review and ship</summary>
-
 ### 🚀 **Stretch goal:** Exercise 8.3: Review and ship (15 min)
+
+<details>
+<summary>Show stretch-goal instructions</summary>
 
 1. Run `/code-review` (plugin skill) and your `my-review-style` agent on the session's changes.
 1. Ask `code-explainer` (plugin agent) to explain the finished architecture, and use the `visualize` skill to produce a data-flow diagram of the exploded-to-knolling transition.
