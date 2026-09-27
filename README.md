@@ -103,7 +103,7 @@ Your workshop laptop already has VS Code (with the GitHub Copilot extension), Gi
 #### 🚀 **Stretch goal** Option B: Copilot CLI
 
 <details>
-<summary>Show stretch-goal instructions</summary>
+<summary>Show CLI fork steps</summary>
 
 1. Start the CLI in your projects folder:
 
@@ -129,7 +129,7 @@ Your workshop laptop already has VS Code (with the GitHub Copilot extension), Gi
 #### 🚀 **Stretch goal** Option C: GitHub Copilot app
 
 <details>
-<summary>Show stretch-goal instructions</summary>
+<summary>Show app fork steps</summary>
 
 1. Fork `WORKSHOP-ORG/common-agents` into `YOUR-ORG` using the GitHub UI.
 1. In the app sidebar, click **+** next to **Projects**.
@@ -165,7 +165,7 @@ common-agents/
 #### 🚀 **Stretch goal** Explore further
 
 <details>
-<summary>Show stretch-goal instructions</summary>
+<summary>Show what to look for</summary>
 
 Spend five minutes reading the files. Look for:
 
@@ -232,7 +232,7 @@ The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (proje
 1. 🚀 **Stretch goal:** Keep personal agents out of the team repo.
 
    <details>
-   <summary>Show stretch-goal instructions</summary>
+   <summary>Show how to keep local agents out of commits</summary>
 
    Any agent you save to `~/.copilot/agents` is now written into `common-agents/.github/agents`. Give personal agents a `my-` prefix and tell Git to ignore them:
 
@@ -252,7 +252,7 @@ The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (proje
 #### 🚀 **Stretch goal:** Step 3 (optional): Share instruction files
 
 <details>
-<summary>Show stretch-goal instructions</summary>
+<summary>Show how to configure instruction files</summary>
 
 If `common-agents` has a folder of shared `*.instructions.md` files, add it to your shell profile:
 
@@ -289,7 +289,7 @@ export COPILOT_CUSTOM_INSTRUCTIONS_DIRS=/Users/YOUR-USER/projects/common-agents/
 ### 🧯 **Troubleshooting (Lab 0)**
 
 <details>
-<summary>Show troubleshooting tips</summary>
+<summary>Fix sign-in, token, and skill issues</summary>
 
 * **VS Code says you have no Copilot license.** Sign out and sign in again with the account that holds the license.
 * **The CLI rejects your token.** Classic personal access tokens (`ghp_`) aren't supported. Use `/login`, or a fine-grained PAT with the **Copilot Requests** permission in `COPILOT_GITHUB_TOKEN`.
@@ -361,7 +361,7 @@ export COPILOT_CUSTOM_INSTRUCTIONS_DIRS=/Users/YOUR-USER/projects/common-agents/
 #### 🚀 **Stretch goal** Use Copilot to create the file
 
 <details>
-<summary>Show stretch-goal instructions</summary>
+<summary>Show the Copilot prompt and file content</summary>
 
 There's no code yet, so `/init create a custom instruction with the following` has nothing to analyze. Write the instructions first to describe the project you *intend* to build.
 
@@ -462,7 +462,7 @@ There's no code yet, so `/init create a custom instruction with the following` h
 ### 🚀 **Stretch goal:** Exercise 1.5: Improve the instructions with `/init` and `root-instructions`
 
 <details>
-<summary>Show stretch-goal instructions</summary>
+<summary>Compare /init with root-instructions</summary>
 
 Now that the repo has code, let Copilot compare the instructions with it. You'll try the built-in command and your team's skill, and compare the two.
 
@@ -483,8 +483,10 @@ Now that the repo has code, let Copilot compare the instructions with it. You'll
 
 </details>
 
+### 🚀 **Stretch goal:** Use nested-hub and nested-detail
+
 <details>
-<summary>🚀 Stretch goal: use nested-hub and nested-detail</summary>
+<summary>Show the hub-and-detail workflow</summary>
 
 Use the `nested-hub` skill to generate a lean `AGENTS.md` hub for the viewer, then `nested-detail` to write one of the detail files it recommends (for example, "animation and transitions").
 
@@ -493,7 +495,7 @@ Use the `nested-hub` skill to generate a lean `AGENTS.md` hub for the viewer, th
 ### 🧯 **Troubleshooting** Exercise 1.6: If the app doesn't open in a browser, configure it to run the viewer
 
 <details>
-<summary>Show troubleshooting steps</summary>
+<summary>Configure the app to start the viewer</summary>
 
 The app reads project settings from `.github/github-app.yml`. This file is for the Copilot app only; it isn't a custom instructions file.
 
@@ -524,7 +526,7 @@ The app reads project settings from `.github/github-app.yml`. This file is for t
 ### 🚀 **Stretch goal:** Exercise 1.7: Add personal custom instructions
 
 <details>
-<summary>Show stretch-goal instructions</summary>
+<summary>Set instructions that follow you across repositories</summary>
 
 Personal instructions follow you across repositories.
 
@@ -563,7 +565,7 @@ Personal instructions follow you across repositories.
 ### 🚀 **Stretch goal:** Exercise 1.8: Add organization custom instructions (organization owners)
 
 <details>
-<summary>Show stretch-goal instructions</summary>
+<summary>Set instructions for your organization</summary>
 
 1. Go to your organization, then **Settings**.
 1. In the left sidebar, click **Copilot**, then **Custom instructions**.
@@ -590,7 +592,7 @@ Personal instructions follow you across repositories.
 ### 🧯 **Troubleshooting (Lab 1)**
 
 <details>
-<summary>Show troubleshooting tips</summary>
+<summary>Fix instruction loading and scope issues</summary>
 
 * **A path-specific file never loads.** Without `applyTo`, the file isn't applied automatically. Check that the glob matches the file being edited.
 * **Copilot ignores part of a long file.** Instruction files over about 1,000 lines risk silent truncation. Split them by domain.
@@ -699,7 +701,7 @@ Open `~/projects/common-agents` in VS Code before you start.
 ### 🚀 **Stretch goal:** Exercise 2.3: Create an issue summarizer with input variables
 
 <details>
-<summary>Show stretch-goal instructions</summary>
+<summary>Build an issue-summarizer prompt</summary>
 
 This prompt reads issues through the GitHub MCP server, so make sure the server is enabled in VS Code.
 
@@ -744,7 +746,7 @@ Look closely at the order of the issues in the output from Exercise 2.3.
 ### 🚀 **Stretch goal:** Exercise 2.5: Turn the review prompt into a shared skill
 
 <details>
-<summary>Show stretch-goal instructions</summary>
+<summary>Share the review prompt as a skill</summary>
 
 `/review-code` only works in VS Code, and only while `common-agents` is the open workspace. As a skill, it works in the CLI, the Copilot app, and the cloud agent. Because of `skillDirectories`, it also works in every repository.
 
@@ -897,7 +899,7 @@ Now fix the sort-order problem from Exercise 2.4 with a skill whose script does 
 ### 🧯 **Troubleshooting (Lab 3)**
 
 <details>
-<summary>Show troubleshooting tips</summary>
+<summary>Fix skill loading, authoring, and installation issues</summary>
 
 * **The skill doesn't load.** The `name` must be 1–64 characters of lowercase letters, numbers, and hyphens, and must match the directory name exactly.
 * **Copilot doesn't pick the skill automatically.** At first, only `name` and `description` load. Make the description specific about when to use the skill.
@@ -936,8 +938,10 @@ Now fix the sort-order problem from Exercise 2.4 with a skill whose script does 
 > [!WARNING]
 > Always preview third-party skills before you install them. Don't pre-approve `shell` or `bash` in `allowed-tools` for a skill unless you've reviewed its scripts and trust the source.
 
+### 🚀 **Stretch goal:** Try the preloaded `js-to-typescript` skill
+
 <details>
-<summary>🚀 Stretch goal: use the preloaded js-to-typescript skill</summary>
+<summary>Convert a small JavaScript project</summary>
 
 Use the preloaded `js-to-typescript` skill (from `.claude/skills`) on a small JavaScript project, and check with `/skills info js-to-typescript` which location it loaded from.
 
@@ -982,7 +986,7 @@ The preloaded `code-explainer` agent says "Do not edit code", but it has no `too
 ### 🚀 **Stretch goal:** Exercise 4.2: Create a `readme-specialist` team agent
 
 <details>
-<summary>Show stretch-goal instructions</summary>
+<summary>Build and test the README agent</summary>
 
 1. Create `~/projects/common-agents/.github/agents/readme-specialist.agent.md`:
 
@@ -1014,7 +1018,7 @@ The preloaded `code-explainer` agent says "Do not edit code", but it has no `too
 ### 🚀 **Stretch goal:** Exercise 4.3: Create a personal agent
 
 <details>
-<summary>Show stretch-goal instructions</summary>
+<summary>Create a personal review-style agent</summary>
 
 A personal agent is just for you. You save it to `~/.copilot/agents/`, which is linked to `common-agents/.github/agents`. The `my-` prefix matches the `.gitignore` rule from Exercise 0.4, so the file stays on your machine and never gets committed to the team repo.
 
@@ -1061,7 +1065,7 @@ Repository:   .github/agents/reviewer.agent.md  ← wins
 ### 🚀 **Stretch goal:** Exercise 4.4: Design a multi-agent handoff
 
 <details>
-<summary>Show stretch-goal instructions</summary>
+<summary>Plan a coordinated multi-agent workflow</summary>
 
 1. Draw this workflow for a real viewer feature, such as "Add a hinge fold animation":
 
@@ -1113,7 +1117,7 @@ This exercise reuses the personal instructions from Exercise 1.7.
 ### 🧯 **Troubleshooting (Lab 4)**
 
 <details>
-<summary>Show troubleshooting tips</summary>
+<summary>Fix agent loading, duplication, and permission issues</summary>
 
 * **Your agent doesn't show up.** Check that the file ends in `.agent.md`, that `ls -l ~/.copilot/agents` shows the link to `common-agents/.github/agents`, and that you restarted the CLI. For org agents, check that the file is on the default branch.
 * **An agent is listed twice inside `common-agents`.** In that repo, the same files load as project agents and, through the link, as personal agents. The project copy takes precedence. Outside `common-agents`, each agent loads once.
@@ -1177,7 +1181,7 @@ This exercise reuses the personal instructions from Exercise 1.7.
 ### 🚀 **Stretch goal:** Exercise 5.3: Check the viewer with the built-in Playwright server
 
 <details>
-<summary>Show stretch-goal instructions</summary>
+<summary>Capture viewer screenshots with Playwright</summary>
 
 The CLI includes a built-in `playwright` MCP server for browser automation. You don't need to configure it.
 
@@ -1195,7 +1199,7 @@ The CLI includes a built-in `playwright` MCP server for browser automation. You 
 ### 🧯 **Troubleshooting (Lab 5)**
 
 <details>
-<summary>Show troubleshooting tips</summary>
+<summary>Fix MCP server connection and policy issues</summary>
 
 * **The server doesn't appear.** Business and Enterprise organizations need the **MCP servers in Copilot** policy turned on. It's off by default.
 * **The server is blocked.** Your organization may use an MCP registry allowlist. Only servers on the allowlist can run.
@@ -1337,7 +1341,7 @@ gh repo create YOUR-ORG/iphone-duo-viewer --private --source=. --remote=origin -
 ### 🧯 **Troubleshooting (Lab 6)**
 
 <details>
-<summary>Show troubleshooting tips</summary>
+<summary>Fix hook configuration and output issues</summary>
 
 * **Hooks don't run.** Check that the file is in `.github/hooks/`, that it's valid JSON (`jq . .github/hooks/guardrails.json`), that it has `"version": 1`, and that the scripts are executable and have a shebang.
 * **The guard didn't block anything.** Timeouts **fail open**: if the hook takes longer than `timeoutSec`, the tool call continues. Keep the guard well under 10 seconds.
@@ -1348,8 +1352,10 @@ gh repo create YOUR-ORG/iphone-duo-viewer --private --source=. --remote=origin -
 
 </details>
 
+### 🚀 **Stretch goal:** Add a session or agent hook
+
 <details>
-<summary>🚀 Stretch goal: add a session or agent hook</summary>
+<summary>Add a sessionStart log or agentStop sound</summary>
 
 Add a `sessionStart` hook that logs the start time to `logs/session.log`, or an `agentStop` hook that plays a sound when the agent finishes.
 
@@ -1529,7 +1535,7 @@ The Tech Specs page also covers the chip, cameras, battery, modem, and a diagram
 ### 🚀 **Stretch goal:** Exercise 8.1: Check your setup (10 min)
 
 <details>
-<summary>Show stretch-goal instructions</summary>
+<summary>Verify the workshop setup from the CLI</summary>
 
 Everything should already be in place. Confirm it in a CLI session in the viewer repo:
 
@@ -1589,7 +1595,7 @@ Everything should already be in place. Confirm it in a CLI session in the viewer
 ### 🚀 **Stretch goal:** Exercise 8.3: Review and ship (15 min)
 
 <details>
-<summary>Show stretch-goal instructions</summary>
+<summary>Review the changes and prepare a pull request</summary>
 
 1. Run `/code-review` (plugin skill) and your `my-review-style` agent on the session's changes.
 1. Ask `code-explainer` (plugin agent) to explain the finished architecture, and use the `visualize` skill to produce a data-flow diagram of the exploded-to-knolling transition.
