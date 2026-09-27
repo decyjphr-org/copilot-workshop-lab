@@ -9,18 +9,9 @@ This split matches how most organizations work. A platform team curates shared c
 
 ## How the pieces fit together
 
-```text
-common-agents  (platform repo)                       iphone-duo-viewer  (product repo)
-───────────────────────────────                      ─────────────────────────────────
-.github/prompts/  ← Lab 2 (VS Code only)             .github/copilot-instructions.md  ← Lab 1
-.github/skills/   ← Labs 2–3 ── skillDirectories ──▶ available in every session
-.claude/skills/   ← preloaded ── skillDirectories ──▶ available in every session
-.github/agents/   ← Lab 4  ◀── ~/.copilot/agents (symlink) ──▶ available in every session
-plugins/ + .github/plugin/marketplace.json ← Lab 7 ── marketplace ──▶ installed as a plugin
-                                                     .github/mcp.json                 ← Lab 5
-                                                     .github/hooks/                   ← Lab 6
-                                                     the viewer app                   ← Lab 8
-```
+<img width="1650" height="847" alt="image" src="https://github.com/user-attachments/assets/7a993eba-8d2e-43a8-83b9-e2b55e40d67b" />
+
+
 
 | Lab | Topic | Repo | Time | Primary surface | Plan needed |
 |-----|-------|------|------|-----------------|-------------|
@@ -95,9 +86,10 @@ Your workshop laptop already has VS Code (with the GitHub Copilot extension), Gi
 
 `common-agents` comes preloaded with some prompt files, skills, and agents from your facilitator. You'll add to it in Labs 2–4 and publish from it in Lab 7, so you need **your own copy that you can push to**. Fork it, or create a repository from it if it's a template.
 
-Choose one of the three options below. They all end in the same state: your copy cloned to `~/projects/common-agents`.
+**Choose one of the three options below.**
+(_They all end in the same state: your copy cloned to `~/projects/common-agents`._)
 
-#### Option A: GitHub UI and Git
+#### Option A: GitHub UI and Git (Recommended)
 
 1. Fork `WORKSHOP-ORG/common-agents` into `YOUR-ORG` using the GitHub UI.
 1. Clone it:
@@ -108,7 +100,7 @@ Choose one of the three options below. They all end in the same state: your copy
    cd common-agents
    ```
 
-#### Option B: Copilot CLI
+#### 🚀 **Stretch goal** Option B: Copilot CLI
 
 1. Start the CLI in your projects folder:
 
@@ -129,7 +121,7 @@ Choose one of the three options below. They all end in the same state: your copy
 > [!TIP]
 > If the fork step fails, check that GitHub CLI is signed in (`gh auth status`), or fork in the GitHub UI and ask Copilot only to clone.
 
-#### Option C: GitHub Copilot app
+#### 🚀 **Stretch goal** Option C: GitHub Copilot app
 
 1. Fork `WORKSHOP-ORG/common-agents` into `YOUR-ORG` using the GitHub UI.
 1. In the app sidebar, click **+** next to **Projects**.
@@ -160,6 +152,7 @@ common-agents/
         └── js-to-typescript/                # a skill in the Claude-compatible location
 ```
 
+#### 🚀 **Stretch goal** Explore further
 Spend five minutes reading the files. Look for:
 
 * How `release-validator/SKILL.md` links to its `scripts/`, `references/`, and `assets/` files instead of copying them.
@@ -206,7 +199,7 @@ In Lab 7 you replace this manual setup with a plugin. That's the supported way t
 
 The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (project) and `~/.copilot/agents/` (personal). There's no setting that adds a third folder. Instead, make your personal agents folder a symbolic link to the `common-agents` agents folder. Every agent in `common-agents` then loads in every session, including agents you add later.
 
-1. If you already have a `~/.copilot/agents` folder, back it up:
+1. 🧯 **Troubleshooting** If you already have a `~/.copilot/agents` folder, back it up:
 
    ```bash
    [ -d ~/.copilot/agents ] && [ ! -L ~/.copilot/agents ] && mv ~/.copilot/agents ~/.copilot/agents.bak
@@ -220,7 +213,7 @@ The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (proje
    # ~/.copilot/agents -> /Users/YOUR-USER/projects/common-agents/.github/agents
    ```
 
-1. Keep personal agents out of the team repo. Any agent you save to `~/.copilot/agents` is now written into `common-agents/.github/agents`. Give personal agents a `my-` prefix and tell Git to ignore them:
+1. 🚀 **Stretch goal:** Keep personal agents out of the team repo. Any agent you save to `~/.copilot/agents` is now written into `common-agents/.github/agents`. Give personal agents a `my-` prefix and tell Git to ignore them:
 
    ```bash
    echo '.github/agents/my-*.agent.md' >> ~/projects/common-agents/.gitignore
@@ -233,7 +226,7 @@ The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (proje
 > [!WARNING]
 > The docs list both agent locations, but they don't mention symbolic links. If the agents don't appear, remove the link (`rm ~/.copilot/agents`), create a normal folder, and copy the `.agent.md` files into it instead. Lab 7 replaces this step with a plugin.
 
-#### Step 3 (optional): Share instruction files
+#### 🚀 **Stretch goal:** Step 3 (optional): Share instruction files
 
 If `common-agents` has a folder of shared `*.instructions.md` files, add it to your shell profile:
 
@@ -308,9 +301,35 @@ export COPILOT_CUSTOM_INSTRUCTIONS_DIRS=/Users/YOUR-USER/projects/common-agents/
 
 ### Exercise 1.2: Write the repository-wide instructions
 
-There's no code yet, so `/init` has nothing to analyze. Write the instructions first to describe the project you *intend* to build.
+1. Click on the `Open in Visual Studio Code` button
+2. Create a file `.github/copilot-instructions.md` with this content:
 
-1. In the app session, ask Copilot to create `.github/copilot-instructions.md` with this content (or create the file yourself):
+   ```markdown
+   # iPhone Duo knolling viewer
+
+   Interactive 3D viewer for the iPhone Duo with an exploded view and a knolling mode.
+
+   ## Stack
+   - TypeScript, Vite, and three.js. No UI framework.
+   - npm for package management.
+
+   ## Commands
+   - `npm run dev`: start the dev server
+   - `npm run build`: type-check and build
+   - `npm test`: run the Playwright tests
+
+   ## Conventions
+   - Scene units are millimeters.
+   - One mesh per physical component. Name every mesh after its part (for example, `inner-display`).
+   - Read all dimensions from `src/specs.ts`. No magic numbers.
+   - Keep modules small: scene setup, parts, layout (exploded and knolling), and UI.
+   ```
+
+#### 🚀 **Stretch goal** Use Copilot to create the file
+
+There's no code yet, so `/init create a custom instruction with the following` has nothing to analyze. Write the instructions first to describe the project you *intend* to build.
+
+1. In the app session, ask Copilot to create `.github/copilot-instructions.md` with this content:
 
    ```markdown
    # iPhone Duo knolling viewer
@@ -352,7 +371,9 @@ There's no code yet, so `/init` has nothing to analyze. Write the instructions f
    - Animate transitions with a single `requestAnimationFrame` loop and easing. No `setInterval`.
    - Dispose geometries and materials when you remove meshes.
    ```
-
+   
+1. Switch to GitHub Copilot App from VS Code if you had opened it
+   
 1. Generate the Playwright instructions with the shared `area-instructions` skill from `common-agents`. In the app session, enter:
 
    ```text
@@ -400,7 +421,7 @@ There's no code yet, so `/init` has nothing to analyze. Write the instructions f
 
 ✅ **Checkpoint:** `copilot instruction` lists `.github/copilot-instructions.md` and both `*.instructions.md` files, and the scaffold follows the rules in them.
 
-### Exercise 1.5: Improve the instructions with `/init` and `root-instructions`
+### 🚀 **Stretch goal:** Exercise 1.5: Improve the instructions with `/init` and `root-instructions`
 
 Now that the repo has code, let Copilot compare the instructions with it. You'll try the built-in command and your team's skill, and compare the two.
 
@@ -421,7 +442,7 @@ Now that the repo has code, let Copilot compare the instructions with it. You'll
 
 🚀 **Stretch goal:** Use the `nested-hub` skill to generate a lean `AGENTS.md` hub for the viewer, then `nested-detail` to write one of the detail files it recommends (for example, "animation and transitions").
 
-### Exercise 1.6: Configure the app to run the viewer
+### 🧯 **Troubleshooting** Exercise 1.6: If the App is not opened in a browser Configure the app to run the viewer
 
 The app reads project settings from `.github/github-app.yml`. This file is for the Copilot app only; it isn't a custom instructions file.
 
@@ -447,7 +468,7 @@ The app reads project settings from `.github/github-app.yml`. This file is for t
 
 **Discussion:** `github-app.yml` also has an `instructions:` key. How is it different from `.github/copilot-instructions.md`? The `instructions:` key applies only in the Copilot app. The instructions file also works in the CLI, VS Code, and the cloud agent. Put conventions in the file.
 
-### Exercise 1.7: Add personal custom instructions
+### 🚀 **Stretch goal:** Exercise 1.7: Add personal custom instructions
 
 Personal instructions follow you across repositories.
 
@@ -481,7 +502,7 @@ Personal instructions follow you across repositories.
 > [!TIP]
 > The Copilot app also has global **App instructions** (app settings → **Sessions** → "Instructions"). They apply only in the app.
 
-### Exercise 1.8: Add organization custom instructions (organization owners)
+### 🚀 **Stretch goal:** Exercise 1.8: Add organization custom instructions (organization owners)
 
 1. Go to your organization, then **Settings**.
 1. In the left sidebar, click **Copilot**, then **Custom instructions**.
@@ -526,7 +547,9 @@ Open `~/projects/common-agents` in VS Code before you start.
 
 ### Exercise 2.1: Tour and fix the preloaded prompts
 
-1. In Chat, type `/` and find the three preloaded prompts: `1-1-meeting-agenda`, `analyze-zendesk`, and `api-security-review`.
+1. Type <command/ctrl+ p> and type `Run prompt files...`
+1. Find the three preloaded prompts: `1-1-meeting-agenda`, `analyze-zendesk`, and `api-security-review`.
+   <img width="603" height="146" alt="image" src="https://github.com/user-attachments/assets/2fef6035-50ac-4305-bea4-850358e3266e" />
 1. Open `api-security-review.prompt.md`. It uses every common frontmatter field: `agent`, `tools`, `model`, and `argument-hint`. Check that the `model` value matches a model in your model picker. If it doesn't, the prompt uses the currently selected model.
 1. Open `1-1-meeting-agenda.prompt.md`. It says `{{period}}`, which VS Code doesn't recognize as a variable. The model just sees the literal text. Fix it:
 
@@ -565,7 +588,6 @@ Open `~/projects/common-agents` in VS Code before you start.
    ---
    description: 'Review code changes against project standards'
    agent: 'agent'
-   tools: ['terminal']
    ---
 
    Review committed changes on this branch. DO NOT modify files.
@@ -592,7 +614,13 @@ Open `~/projects/common-agents` in VS Code before you start.
    - Defensive programming: null/undefined access
    ````
 
-1. Create a branch and commit a change that breaks one of the authoring rules from Exercise 2.1. For example, rename the `visualize` skill's directory to `visualise` without changing its `name`.
+1. Create a branch
+   ```
+   git checkout -b add-prompts
+   
+   ```
+1. commit the changes
+1. Commit a change that breaks one of the authoring rules from Exercise 2.1. For example, rename the `visualize` skill's directory to `visualissse` without changing its `name`.
 1. In Chat, type `/review-code` and press <kbd>Enter</kbd>.
 
 ✅ **Checkpoint:** The review reports that the `name` and the directory don't match, and no files change. Undo the rename afterward.
@@ -600,7 +628,7 @@ Open `~/projects/common-agents` in VS Code before you start.
 > [!TIP]
 > Tool names vary between VS Code versions. If `terminal` isn't recognized, use the **Configure Tools** picker in the prompt file editor to insert valid tool names.
 
-### Exercise 2.3: Create an issue summarizer with input variables
+### 🚀 **Stretch goal:** Exercise 2.3: Create an issue summarizer with input variables
 
 This prompt reads issues through the GitHub MCP server, so make sure the server is enabled in VS Code.
 
@@ -640,7 +668,7 @@ Look closely at the order of the issues in the output from Exercise 2.3.
 
 ✅ **Checkpoint:** You can explain when a task needs a prompt file and when it needs a skill with a script. You'll build this skill in Exercise 3.2.
 
-### Exercise 2.5: Turn the review prompt into a shared skill
+### 🚀 **Stretch goal:** Exercise 2.5: Turn the review prompt into a shared skill
 
 `/review-code` only works in VS Code, and only while `common-agents` is the open workspace. As a skill, it works in the CLI, the Copilot app, and the cloud agent. Because of `skillDirectories`, it also works in every repository.
 
@@ -727,7 +755,7 @@ Look closely at the order of the issues in the output from Exercise 2.3.
    ```
 
    ```copilot
-   Use the /release-validator skill to check release v2.4.0. Testing and security checks passed, docs are done, and Product, Marketing, and Revenue approved.
+   Use the /release-validator skill to check release v1.0.0. Testing and security checks passed, docs are done, and Product, Marketing, and Revenue approved.
    ```
 
 1. Open the generated report, tick the Security box and fill in an approver, then ask Copilot to validate again.
@@ -780,7 +808,7 @@ Now fix the sort-order problem from Exercise 2.4 with a skill whose script does 
 1. Run `/skills reload`, then:
 
    ```copilot
-   Use the /issue-triage skill on @microsoft/vscode.
+   Use the /issue-triage skill on @github-community-projects/safe-settings.
    ```
 
 1. Commit and push.
@@ -863,7 +891,7 @@ The preloaded `code-explainer` agent says "Do not edit code", but it has no `too
 
 ✅ **Checkpoint:** The explanation includes a Mermaid diagram, and the agent refuses, or isn't able, to edit files when you ask it to fix bugs.
 
-### Exercise 4.2: Create a `readme-specialist` team agent
+### 🚀 **Stretch goal:** Exercise 4.2: Create a `readme-specialist` team agent
 
 1. Create `~/projects/common-agents/.github/agents/readme-specialist.agent.md`:
 
@@ -890,7 +918,7 @@ The preloaded `code-explainer` agent says "Do not edit code", but it has no `too
 
 **Optional (organization owners): promote it to the organization.** Copy the file to `agents/readme-specialist.agent.md` in your organization's `.github-private` repository and commit it to the default branch. The agent then appears for everyone in the organization on GitHub.com, with no local setup.
 
-### Exercise 4.3: Create a personal agent
+### 🚀 **Stretch goal:** Exercise 4.3: Create a personal agent
 
 A personal agent is just for you. You save it to `~/.copilot/agents/`, which is linked to `common-agents/.github/agents`. The `my-` prefix matches the `.gitignore` rule from Exercise 0.4, so the file stays on your machine and never gets committed to the team repo.
 
@@ -932,7 +960,7 @@ Organization: .github-private/agents/reviewer.agent.md
 Repository:   .github/agents/reviewer.agent.md  ← wins
 ```
 
-### Exercise 4.4: Design a multi-agent handoff
+### 🚀 **Stretch goal:** Exercise 4.4: Design a multi-agent handoff
 
 1. Draw this workflow for a real viewer feature, such as "Add a hinge fold animation":
 
@@ -1038,7 +1066,7 @@ This exercise reuses the personal instructions from Exercise 1.7.
 > [!TIP]
 > MCP servers configured for a repository or for the CLI are also available in the Copilot app. If Context7 can't connect in the app, the app may not see your shell's environment variables. Start the app from a terminal with `copilot app`.
 
-### Exercise 5.3: Check the viewer with the built-in Playwright server
+### 🚀 **Stretch goal:** Exercise 5.3: Check the viewer with the built-in Playwright server
 
 The CLI includes a built-in `playwright` MCP server for browser automation. You don't need to configure it.
 
@@ -1343,7 +1371,7 @@ You'll **move** the files, not copy them. If the same skill is loaded from both 
 
 ---
 
-## Lab 8: Keystone: iPhone Duo knolling viewer
+## 🚀 Lab 8: Keystone: iPhone Duo knolling viewer
 
 **Goal:** Use everything from Labs 1–7 to turn the viewer scaffold into an interactive 3D model of the iPhone Duo. It has an exploded view and a *knolling* mode that lays every component flat in an aligned, non-overlapping grid.
 
@@ -1367,7 +1395,7 @@ Apple announced the iPhone Duo at Apple Park on September 9, 2026, alongside the
 
 The Tech Specs page also covers the chip, cameras, battery, modem, and a diagram of the buttons and connectors.
 
-### Exercise 8.1: Check your setup (10 min)
+### 🚀 **Stretch goal:** Exercise 8.1: Check your setup (10 min)
 
 Everything should already be in place. Confirm it in a CLI session in the viewer repo:
 
@@ -1422,7 +1450,7 @@ Everything should already be in place. Confirm it in a CLI session in the viewer
 * [ ] Every mesh is named after the part it represents.
 * [ ] `npm test` passes.
 
-### Exercise 8.3: Review and ship (15 min)
+### 🚀 **Stretch goal:** Exercise 8.3: Review and ship (15 min)
 
 1. Run `/code-review` (plugin skill) and your `my-review-style` agent on the session's changes.
 1. Ask `code-explainer` (plugin agent) to explain the finished architecture, and use the `visualize` skill to produce a data-flow diagram of the exploded-to-knolling transition.
