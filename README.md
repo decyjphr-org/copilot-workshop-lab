@@ -60,13 +60,8 @@ plugins/ + .github/plugin/marketplace.json ← Lab 7 ── marketplace ──�
 
 1. Go to [**github.com → Settings → Billing and licensing**](https://github.com/settings/copilot/features).
 1. Under "GitHub Copilot", note the plan name and the license source (personal or granted by an organization).
-1. If an organization grants your license, ask an organization or enterprise owner to confirm the plan tier in **Org Settings → Copilot → Policies**.
-
-**Organization owner path:**
-
-1. Go to your organization, then **Settings → Copilot → Access**.
-1. The plan name ("Copilot Business" or "Copilot Enterprise") appears in the header.
-
+1. Your Copilot license would be granted by your GitHub Enterprise.
+   
 ✅ **Checkpoint:** You know which plan you have, and which labs you can run end to end (see the table at the top).
 
 ### Exercise 0.2: Sign in to every client
