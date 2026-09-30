@@ -1221,6 +1221,9 @@ The CLI includes a built-in `playwright` MCP server for browser automation. You 
 
 ## Lab 6: Hooks
 
+<details>
+<summary>🚀 Stretch goal: show the optional hooks lab</summary>
+
 **Goal:** Enforce guardrails in the viewer repo with a `preToolUse` hook and format files automatically with a `postToolUse` hook. Hooks are deterministic: they run every time, whatever the model decides.
 
 **Repo:** `iphone-duo-viewer` · **Surface:** CLI, cloud agent
@@ -1368,6 +1371,8 @@ gh repo create YOUR-ORG/iphone-duo-viewer --private --source=. --remote=origin -
 <summary>Show how to add a sessionStart log or agentStop sound</summary>
 
 Add a `sessionStart` hook that logs the start time to `logs/session.log`, or an `agentStop` hook that plays a sound when the agent finishes.
+
+</details>
 
 </details>
 
