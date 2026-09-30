@@ -99,6 +99,30 @@ Your workshop laptop already has VS Code (with the GitHub Copilot extension), Gi
    git clone https://github.com/YOUR-ORG/common-agents.git
    cd common-agents
    ```
+#### Look at what's included
+
+Your copy uses the standard project folders, and comes preloaded with:
+
+```text
+common-agents/
+├── .github/
+│   ├── agents/
+│   │   └── code-explainer.agent.md          # Lab 4: explains a codebase (needs hardening)
+│   ├── prompts/
+│   │   ├── 1-1-meeting-agenda.prompt.md     # Lab 2: has a bug to fix
+│   │   ├── analyze-zendesk.prompt.md        # reference only, not for chat
+│   │   └── api-security-review.prompt.md    # Lab 2: full frontmatter example
+│   └── skills/
+│       ├── root-instructions/               # Lab 1: generates copilot-instructions.md
+│       ├── area-instructions/               # Lab 1: generates *.instructions.md for one area
+│       ├── nested-hub/  nested-detail/      # Lab 1 stretch: AGENTS.md hub + detail files
+│       ├── release-validator/               # Lab 3: reference skill with script, references, assets
+│       ├── visualize/                       # Lab 8: diagrams of code logic and data flow
+│       └── html-in-canvas/                  # Lab 8 stretch: HTML rendered into a canvas or three.js
+└── .claude/
+    └── skills/
+        └── js-to-typescript/                # a skill in the Claude-compatible location
+```
 
 #### 🚀 **Stretch goal** Option B: Copilot CLI
 
@@ -137,30 +161,6 @@ Your workshop laptop already has VS Code (with the GitHub Copilot extension), Gi
 
 </details>
 
-#### Look at what's included
-
-Your copy uses the standard project folders, and comes preloaded with:
-
-```text
-common-agents/
-├── .github/
-│   ├── agents/
-│   │   └── code-explainer.agent.md          # Lab 4: explains a codebase (needs hardening)
-│   ├── prompts/
-│   │   ├── 1-1-meeting-agenda.prompt.md     # Lab 2: has a bug to fix
-│   │   ├── analyze-zendesk.prompt.md        # reference only, not for chat
-│   │   └── api-security-review.prompt.md    # Lab 2: full frontmatter example
-│   └── skills/
-│       ├── root-instructions/               # Lab 1: generates copilot-instructions.md
-│       ├── area-instructions/               # Lab 1: generates *.instructions.md for one area
-│       ├── nested-hub/  nested-detail/      # Lab 1 stretch: AGENTS.md hub + detail files
-│       ├── release-validator/               # Lab 3: reference skill with script, references, assets
-│       ├── visualize/                       # Lab 8: diagrams of code logic and data flow
-│       └── html-in-canvas/                  # Lab 8 stretch: HTML rendered into a canvas or three.js
-└── .claude/
-    └── skills/
-        └── js-to-typescript/                # a skill in the Claude-compatible location
-```
 
 #### 🚀 **Stretch goal** Explore further
 
@@ -215,8 +215,9 @@ In Lab 7 you replace this manual setup with a plugin. That's the supported way t
 
 The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (project) and `~/.copilot/agents/` (personal). There's no setting that adds a third folder. Instead, make your personal agents folder a symbolic link to the `common-agents` agents folder. Every agent in `common-agents` then loads in every session, including agents you add later.
 
-1. 🧯 **Troubleshooting** If you already have a `~/.copilot/agents` folder, back it up:
-
+### 🧯 **Troubleshooting** 
+<details>
+<summary>If you already have a `~/.copilot/agents` folder, back it up:</summary>
    ```bash
    [ -d ~/.copilot/agents ] && [ ! -L ~/.copilot/agents ] && mv ~/.copilot/agents ~/.copilot/agents.bak
    ```
@@ -230,6 +231,11 @@ The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (proje
    ```
 
 1. Restart the CLI whenever you add or change an agent.
+
+> [!WARNING]
+> The docs list both agent locations, but they don't mention symbolic links. If the agents don't appear, remove the link (`rm ~/.copilot/agents`), create a normal folder, and copy the `.agent.md` files into it instead. Lab 7 replaces this step with a plugin.
+
+</details>
 
 🚀 **Stretch goal:** Keep personal agents out of the team repo.
 
@@ -247,9 +253,6 @@ If you backed up any agents in step 1, move them back with a `my-` prefix, for e
 Restart the CLI if you restore any agents.
 
 </details>
-
-> [!WARNING]
-> The docs list both agent locations, but they don't mention symbolic links. If the agents don't appear, remove the link (`rm ~/.copilot/agents`), create a normal folder, and copy the `.agent.md` files into it instead. Lab 7 replaces this step with a plugin.
 
 #### 🚀 **Stretch goal:** Step 3 (optional): Share instruction files
 
@@ -411,6 +414,10 @@ There's no code yet, so `/init create a custom instruction with the following` h
    - Animate transitions with a single `requestAnimationFrame` loop and easing. No `setInterval`.
    - Dispose geometries and materials when you remove meshes.
    ```
+
+### Exercise 1.3.1: Create instructions using Copilot
+
+1. Save all files and close VS Code
    
 1. Switch to GitHub Copilot App from VS Code if you had opened it
    
@@ -735,15 +742,16 @@ This prompt reads issues through the GitHub MCP server, so make sure the server 
 
 </details>
 
-### Exercise 2.4: Discuss the sort-order problem
+### 🚀 **Stretch goal:** Exercise 2.4: Discuss the sort-order problem
+<details>
+ <summary>Look closely at the order of the issues in the output from Exercise 2.3.</summary>
 
-Look closely at the order of the issues in the output from Exercise 2.3.
+
 
 1. Is the list really sorted by "needs attention"? Is a stale issue ranked above a hot one?
 1. With your table, discuss why a prompt can't guarantee a deterministic sort. The model ranks the issues by reading them, not by calculating.
 1. Sketch how a **skill** fixes this. A `scripts/rank_issues.py` script fetches the issues, computes a score from last-updated age and comment activity, and returns a sorted list. The model then only writes the summaries.
-
-✅ **Checkpoint:** You can explain when a task needs a prompt file and when it needs a skill with a script. You'll build this skill in Exercise 3.2.
+</details>
 
 ### 🚀 **Stretch goal:** Exercise 2.5: Turn the review prompt into a shared skill
 
