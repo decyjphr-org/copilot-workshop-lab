@@ -1380,6 +1380,9 @@ Add a `sessionStart` hook that logs the start time to `logs/session.log`, or an 
 
 ## Lab 7: Plugins
 
+<details>
+<summary>🚀 Stretch goal: show the optional plugins lab</summary>
+
 **Goal:** Graduate the best skills and agents from `common-agents` into a plugin, publish `common-agents` as a marketplace, and install the plugin into the viewer workflow. This replaces the manual setup from Exercise 0.4.
 
 **Repo:** `common-agents` · **Surface:** CLI, Copilot app
@@ -1520,6 +1523,8 @@ You'll **move** the files, not copy them. If the same skill is loaded from both 
 
 * **Publish a second plugin.** Package the four instruction-generator skills as `instructions-kit`: `root-instructions`, `area-instructions`, `nested-hub`, and `nested-detail`. Move them into `plugins/instructions-kit/skills/`, add a `plugin.json`, and add a second entry to the `plugins` array in `marketplace.json`. Subscribers can then install just the kit they need. Before you publish, check the skills against the Exercise 2.1 authoring rules. For example, `root-instructions` has a `tools` field and mentions VS Code-only tools.
 * **Auto-install for contributors.** Add the marketplace and plugin to the viewer repo's `.github/copilot/settings.json` with `extraKnownMarketplaces` and `enabledPlugins`, so every contributor gets the kit automatically. See [Configuration file settings](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-config-dir-reference#configuration-file-settings) for the exact format.
+
+</details>
 
 </details>
 
