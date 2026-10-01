@@ -27,10 +27,6 @@ This split matches how most organizations work. A platform team curates shared c
 
 **Conventions used in this guide**
 
-> [!important]
-> Replace `WORKSHOP-ORG` with `decyjphr-org`
->
-
 * Placeholders are in `CAPS`. Replace them with your own values:
   * `YOUR-ORG` is an organization or user account where you can push.
   * `YOUR-USER` is your local macOS or Linux user name (for absolute paths).
@@ -139,7 +135,7 @@ common-agents/
 1. Give Copilot the task:
 
    ```copilot
-   Fork WORKSHOP-ORG/common-agents into YOUR-ORG and clone the fork into
+   Fork decyjphr-org/common-agents into YOUR-ORG and clone the fork into
    ./common-agents. Then list the contents of common-agents/.github.
    ```
 
@@ -155,7 +151,7 @@ common-agents/
 <details>
 <summary>Show app fork steps</summary>
 
-1. Fork `WORKSHOP-ORG/common-agents` into `YOUR-ORG` using the GitHub UI.
+1. Fork `decyjphr-org/common-agents` into `YOUR-ORG` using the GitHub UI.
 1. In the app sidebar, click **+** next to **Projects**.
 1. Choose the option to pick a project from GitHub, search for `YOUR-ORG/common-agents`, and clone it into `~/projects`.
 
