@@ -32,7 +32,7 @@ This split matches how most organizations work. A platform team curates shared c
   * `YOUR-USER` is your local macOS, Linux, or Windows user name (for absolute paths).
   * `YOUR-HANDLE` is your GitHub username.
 * Both repositories are assumed to live in `~/projects/`. Adjust the paths if you use a different folder.
-* Commands are shown for macOS/Linux (`bash`) first. Where the Windows 11 Pro command differs, a **Windows 11 Pro** variant (PowerShell, or Command Prompt where noted) follows immediately after.
+* Commands are shown for macOS/Linux (`bash`) first. Where the Windows 11 Pro command differs, a **Windows 11 Pro** variant using the Command Prompt (`cmd.exe`) follows immediately after.
 * ✅ **Checkpoint** marks how you confirm that a step worked. Don't skip these.
 * 🧯 **Troubleshooting** lists the most common problems for that lab.
 * 🚀 **Stretch goal** items are optional. Try them if you finish early.
@@ -219,14 +219,13 @@ The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (proje
    [ -d ~/.copilot/agents ] && [ ! -L ~/.copilot/agents ] && mv ~/.copilot/agents ~/.copilot/agents.bak
    ```
 
-   **Windows 11 Pro (PowerShell):**
+   **Windows 11 Pro (Command Prompt):**
 
-   ```powershell
-   if (Test-Path "$env:USERPROFILE\.copilot\agents" -PathType Container) {
-     if (-not (Get-Item "$env:USERPROFILE\.copilot\agents").LinkType) {
-       Rename-Item "$env:USERPROFILE\.copilot\agents" "agents.bak"
-     }
-   }
+   ```cmd
+   if exist "%USERPROFILE%\.copilot\agents" (
+     fsutil reparsepoint query "%USERPROFILE%\.copilot\agents" >nul 2>&1
+     if errorlevel 1 ren "%USERPROFILE%\.copilot\agents" "agents.bak"
+   )
    ```
 
 1. Create the link and check it:
@@ -247,7 +246,7 @@ The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (proje
    ```
 
    > [!NOTE]
-   > `mklink` is a `cmd.exe` builtin, not a PowerShell cmdlet. Run it from a `cmd.exe` prompt (or use `New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.copilot\agents" -Target "$env:USERPROFILE\projects\common-agents\.github\agents"` in PowerShell). Creating a symlink requires either an elevated (Administrator) prompt or Windows 11's Developer Mode turned on (**Settings → Privacy & security → For developers**).
+   > `mklink` only works from a `cmd.exe` prompt. Creating a symlink requires either an elevated (Administrator) prompt or Windows 11's Developer Mode turned on (**Settings → Privacy & security → For developers**).
 
 1. Restart the CLI whenever you add or change an agent.
 
@@ -267,20 +266,16 @@ Any agent you save to `~/.copilot/agents` is now written into `common-agents/.gi
 echo '.github/agents/my-*.agent.md' >> ~/projects/common-agents/.gitignore
 ```
 
-**Windows 11 Pro (PowerShell):**
+**Windows 11 Pro (Command Prompt):**
 
-```powershell
-$gitignore = "$env:USERPROFILE\projects\common-agents\.gitignore"
-$line = '.github/agents/my-*.agent.md'
-if (-not (Test-Path $gitignore) -or -not (Select-String -Path $gitignore -Pattern ([regex]::Escape($line)) -Quiet)) {
-  Add-Content $gitignore $line
-}
+```cmd
+findstr /x /c:".github/agents/my-*.agent.md" "%USERPROFILE%\projects\common-agents\.gitignore" >nul 2>&1 || echo .github/agents/my-*.agent.md>>"%USERPROFILE%\projects\common-agents\.gitignore"
 ```
 
 > [!NOTE]
-> The single-quoted `$line` text is added literally — the `*` is not expanded as a glob. The `Select-String` check keeps the command idempotent, so running it more than once won't duplicate the `.gitignore` entry.
+> The `findstr /x /c:"..."` check keeps the command idempotent, so running it more than once won't duplicate the `.gitignore` entry.
 
-If you backed up any agents in step 1, move them back with a `my-` prefix, for example `mv ~/.copilot/agents.bak/reviewer.agent.md ~/.copilot/agents/my-reviewer.agent.md` (Windows: `Rename-Item "$env:USERPROFILE\.copilot\agents.bak\reviewer.agent.md" "my-reviewer.agent.md"` then move it into `~/.copilot/agents`).
+If you backed up any agents in step 1, move them back with a `my-` prefix, for example `mv ~/.copilot/agents.bak/reviewer.agent.md ~/.copilot/agents/my-reviewer.agent.md` (Windows: `ren "%USERPROFILE%\.copilot\agents.bak\reviewer.agent.md" "my-reviewer.agent.md"` then move it into `~/.copilot/agents`).
 
 Restart the CLI if you restore any agents.
 
@@ -297,11 +292,14 @@ If `common-agents` has a folder of shared `*.instructions.md` files, add it to y
 export COPILOT_CUSTOM_INSTRUCTIONS_DIRS=/Users/YOUR-USER/projects/common-agents/PATH-TO-INSTRUCTIONS
 ```
 
-**Windows 11 Pro (PowerShell, add to your `$PROFILE`):**
+**Windows 11 Pro (Command Prompt, persists for new sessions):**
 
-```powershell
-$env:COPILOT_CUSTOM_INSTRUCTIONS_DIRS = "C:\Users\YOUR-USER\projects\common-agents\PATH-TO-INSTRUCTIONS"
+```cmd
+setx COPILOT_CUSTOM_INSTRUCTIONS_DIRS "C:\Users\YOUR-USER\projects\common-agents\PATH-TO-INSTRUCTIONS"
 ```
+
+> [!NOTE]
+> `setx` writes the variable for future Command Prompt sessions; it doesn't affect the one you ran it in. Open a new Command Prompt window afterward.
 
 </details>
 
@@ -360,11 +358,11 @@ $env:COPILOT_CUSTOM_INSTRUCTIONS_DIRS = "C:\Users\YOUR-USER\projects\common-agen
    git init -b main
    ```
 
-   **Windows 11 Pro (PowerShell):**
+   **Windows 11 Pro (Command Prompt):**
 
-   ```powershell
-   New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\projects\iphone-duo-viewer"
-   Set-Location "$env:USERPROFILE\projects\iphone-duo-viewer"
+   ```cmd
+   mkdir "%USERPROFILE%\projects\iphone-duo-viewer"
+   cd /d "%USERPROFILE%\projects\iphone-duo-viewer"
    git init -b main
    ```
 
@@ -1203,11 +1201,14 @@ This exercise reuses the personal instructions from Exercise 1.7.
    export CONTEXT7_API_KEY=YOUR-API-KEY
    ```
 
-   **Windows 11 Pro (PowerShell, add to your `$PROFILE`):**
+   **Windows 11 Pro (Command Prompt, persists for new sessions):**
 
-   ```powershell
-   $env:CONTEXT7_API_KEY = "YOUR-API-KEY"
+   ```cmd
+   setx CONTEXT7_API_KEY "YOUR-API-KEY"
    ```
+
+   > [!NOTE]
+   > `setx` writes the variable for future Command Prompt sessions; it doesn't affect the one you ran it in. Open a new Command Prompt window afterward.
 
 ### Exercise 5.2: Add a repository MCP configuration
 
