@@ -222,8 +222,10 @@ The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (proje
    **Windows 11 Pro (PowerShell):**
 
    ```powershell
-   if ((Test-Path "$env:USERPROFILE\.copilot\agents" -PathType Container) -and -not (Get-Item "$env:USERPROFILE\.copilot\agents").LinkType) {
-     Rename-Item "$env:USERPROFILE\.copilot\agents" "agents.bak"
+   if (Test-Path "$env:USERPROFILE\.copilot\agents" -PathType Container) {
+     if (-not (Get-Item "$env:USERPROFILE\.copilot\agents").LinkType) {
+       Rename-Item "$env:USERPROFILE\.copilot\agents" "agents.bak"
+     }
    }
    ```
 
@@ -239,8 +241,9 @@ The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (proje
 
    ```cmd
    mklink /D "%USERPROFILE%\.copilot\agents" "%USERPROFILE%\projects\common-agents\.github\agents"
-   dir "%USERPROFILE%\.copilot\agents"
-   REM <SYMLINKD>  agents [C:\Users\YOUR-USER\projects\common-agents\.github\agents]
+   dir "%USERPROFILE%\.copilot"
+   REM Look for a line like this in the directory listing for the parent ".copilot" folder:
+   REM <SYMLINKD>     agents [C:\Users\YOUR-USER\projects\common-agents\.github\agents]
    ```
 
    > [!NOTE]
@@ -267,8 +270,15 @@ echo '.github/agents/my-*.agent.md' >> ~/projects/common-agents/.gitignore
 **Windows 11 Pro (PowerShell):**
 
 ```powershell
-Add-Content "$env:USERPROFILE\projects\common-agents\.gitignore" '.github/agents/my-*.agent.md'
+$gitignore = "$env:USERPROFILE\projects\common-agents\.gitignore"
+$line = '.github/agents/my-*.agent.md'
+if (-not (Test-Path $gitignore) -or -not (Select-String -Path $gitignore -Pattern ([regex]::Escape($line)) -Quiet)) {
+  Add-Content $gitignore $line
+}
 ```
+
+> [!NOTE]
+> The single-quoted `$line` text is added literally — the `*` is not expanded as a glob. The `Select-String` check keeps the command idempotent, so running it more than once won't duplicate the `.gitignore` entry.
 
 If you backed up any agents in step 1, move them back with a `my-` prefix, for example `mv ~/.copilot/agents.bak/reviewer.agent.md ~/.copilot/agents/my-reviewer.agent.md` (Windows: `Rename-Item "$env:USERPROFILE\.copilot\agents.bak\reviewer.agent.md" "my-reviewer.agent.md"` then move it into `~/.copilot/agents`).
 
@@ -353,7 +363,7 @@ $env:COPILOT_CUSTOM_INSTRUCTIONS_DIRS = "C:\Users\YOUR-USER\projects\common-agen
    **Windows 11 Pro (PowerShell):**
 
    ```powershell
-   New-Item -ItemType Directory -Force "$env:USERPROFILE\projects\iphone-duo-viewer"
+   New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\projects\iphone-duo-viewer"
    Set-Location "$env:USERPROFILE\projects\iphone-duo-viewer"
    git init -b main
    ```
