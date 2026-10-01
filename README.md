@@ -29,9 +29,10 @@ This split matches how most organizations work. A platform team curates shared c
 
 * Placeholders are in `CAPS`. Replace them with your own values:
   * `YOUR-ORG` is an organization or user account where you can push.
-  * `YOUR-USER` is your local macOS or Linux user name (for absolute paths).
+  * `YOUR-USER` is your local macOS, Linux, or Windows user name (for absolute paths).
   * `YOUR-HANDLE` is your GitHub username.
 * Both repositories are assumed to live in `~/projects/`. Adjust the paths if you use a different folder.
+* Commands are shown for macOS/Linux (`bash`) first. Where the Windows 11 Pro command differs, a **Windows 11 Pro** variant (PowerShell, or Command Prompt where noted) follows immediately after.
 * ✅ **Checkpoint** marks how you confirm that a step worked. Don't skip these.
 * 🧯 **Troubleshooting** lists the most common problems for that lab.
 * 🚀 **Stretch goal** items are optional. Try them if you finish early.
@@ -218,6 +219,14 @@ The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (proje
    [ -d ~/.copilot/agents ] && [ ! -L ~/.copilot/agents ] && mv ~/.copilot/agents ~/.copilot/agents.bak
    ```
 
+   **Windows 11 Pro (PowerShell):**
+
+   ```powershell
+   if ((Test-Path "$env:USERPROFILE\.copilot\agents" -PathType Container) -and -not (Get-Item "$env:USERPROFILE\.copilot\agents").LinkType) {
+     Rename-Item "$env:USERPROFILE\.copilot\agents" "agents.bak"
+   }
+   ```
+
 1. Create the link and check it:
 
    ```bash
@@ -226,10 +235,21 @@ The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (proje
    # ~/.copilot/agents -> /Users/YOUR-USER/projects/common-agents/.github/agents
    ```
 
+   **Windows 11 Pro (Command Prompt, run as Administrator, or with Developer Mode enabled):**
+
+   ```cmd
+   mklink /D "%USERPROFILE%\.copilot\agents" "%USERPROFILE%\projects\common-agents\.github\agents"
+   dir "%USERPROFILE%\.copilot\agents"
+   REM <SYMLINKD>  agents [C:\Users\YOUR-USER\projects\common-agents\.github\agents]
+   ```
+
+   > [!NOTE]
+   > `mklink` is a `cmd.exe` builtin, not a PowerShell cmdlet. Run it from a `cmd.exe` prompt (or use `New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.copilot\agents" -Target "$env:USERPROFILE\projects\common-agents\.github\agents"` in PowerShell). Creating a symlink requires either an elevated (Administrator) prompt or Windows 11's Developer Mode turned on (**Settings → Privacy & security → For developers**).
+
 1. Restart the CLI whenever you add or change an agent.
 
 > [!WARNING]
-> The docs list both agent locations, but they don't mention symbolic links. If the agents don't appear, remove the link (`rm ~/.copilot/agents`), create a normal folder, and copy the `.agent.md` files into it instead. Lab 7 replaces this step with a plugin.
+> The docs list both agent locations, but they don't mention symbolic links. If the agents don't appear, remove the link (`rm ~/.copilot/agents`, or on Windows `rmdir "%USERPROFILE%\.copilot\agents"`), create a normal folder, and copy the `.agent.md` files into it instead. Lab 7 replaces this step with a plugin.
 
 </details>
 
@@ -244,7 +264,13 @@ Any agent you save to `~/.copilot/agents` is now written into `common-agents/.gi
 echo '.github/agents/my-*.agent.md' >> ~/projects/common-agents/.gitignore
 ```
 
-If you backed up any agents in step 1, move them back with a `my-` prefix, for example `mv ~/.copilot/agents.bak/reviewer.agent.md ~/.copilot/agents/my-reviewer.agent.md`.
+**Windows 11 Pro (PowerShell):**
+
+```powershell
+Add-Content "$env:USERPROFILE\projects\common-agents\.gitignore" '.github/agents/my-*.agent.md'
+```
+
+If you backed up any agents in step 1, move them back with a `my-` prefix, for example `mv ~/.copilot/agents.bak/reviewer.agent.md ~/.copilot/agents/my-reviewer.agent.md` (Windows: `Rename-Item "$env:USERPROFILE\.copilot\agents.bak\reviewer.agent.md" "my-reviewer.agent.md"` then move it into `~/.copilot/agents`).
 
 Restart the CLI if you restore any agents.
 
@@ -259,6 +285,12 @@ If `common-agents` has a folder of shared `*.instructions.md` files, add it to y
 
 ```bash
 export COPILOT_CUSTOM_INSTRUCTIONS_DIRS=/Users/YOUR-USER/projects/common-agents/PATH-TO-INSTRUCTIONS
+```
+
+**Windows 11 Pro (PowerShell, add to your `$PROFILE`):**
+
+```powershell
+$env:COPILOT_CUSTOM_INSTRUCTIONS_DIRS = "C:\Users\YOUR-USER\projects\common-agents\PATH-TO-INSTRUCTIONS"
 ```
 
 </details>
@@ -296,7 +328,7 @@ export COPILOT_CUSTOM_INSTRUCTIONS_DIRS=/Users/YOUR-USER/projects/common-agents/
 * **The CLI rejects your token.** Classic personal access tokens (`ghp_`) aren't supported. Use `/login`, or a fine-grained PAT with the **Copilot Requests** permission in `COPILOT_GITHUB_TOKEN`.
 * **The Copilot app shows an authorization error.** The app has its own policy toggle, separate from the CLI. Ask your admin to enable it.
 * **`/skills list` doesn't show the common skills.** Check the path in `skillDirectories`: it must be absolute, it must exist, and it must end in `.github/skills`. Open `/settings` and look at the **Problems** tab for errors in the file.
-* **`ls -l ~/.copilot/agents` lists files instead of showing a link.** `~/.copilot/agents` was still a normal folder when you ran `ln -s`, so the link was created *inside* it, as `~/.copilot/agents/agents`. Remove that link (`rm ~/.copilot/agents/agents`), run the backup command from Step 2, then create the link again.
+* **`ls -l ~/.copilot/agents` (or `dir "%USERPROFILE%\.copilot\agents"` on Windows) lists files instead of showing a link.** `~/.copilot/agents` was still a normal folder when you ran `ln -s` (or `mklink`), so the link was created *inside* it, as `~/.copilot/agents/agents`. Remove that link (`rm ~/.copilot/agents/agents`, or on Windows `rmdir "%USERPROFILE%\.copilot\agents\agents"`), run the backup command from Step 2, then create the link again.
 
 </details>
 
@@ -315,6 +347,14 @@ export COPILOT_CUSTOM_INSTRUCTIONS_DIRS=/Users/YOUR-USER/projects/common-agents/
    ```bash
    mkdir -p ~/projects/iphone-duo-viewer
    cd ~/projects/iphone-duo-viewer
+   git init -b main
+   ```
+
+   **Windows 11 Pro (PowerShell):**
+
+   ```powershell
+   New-Item -ItemType Directory -Force "$env:USERPROFILE\projects\iphone-duo-viewer"
+   Set-Location "$env:USERPROFILE\projects\iphone-duo-viewer"
    git init -b main
    ```
 
@@ -1153,6 +1193,12 @@ This exercise reuses the personal instructions from Exercise 1.7.
    export CONTEXT7_API_KEY=YOUR-API-KEY
    ```
 
+   **Windows 11 Pro (PowerShell, add to your `$PROFILE`):**
+
+   ```powershell
+   $env:CONTEXT7_API_KEY = "YOUR-API-KEY"
+   ```
+
 ### Exercise 5.2: Add a repository MCP configuration
 
 1. Create `~/projects/iphone-duo-viewer/.github/mcp.json`:
@@ -1315,6 +1361,9 @@ gh repo create YOUR-ORG/iphone-duo-viewer --private --source=. --remote=origin -
    chmod +x .github/hooks/guard.sh .github/hooks/format.sh
    ```
 
+   > [!NOTE]
+   > **Windows 11 Pro:** The hook scripts above are Bash scripts, and `guardrails.json` invokes them with the `"bash"` key, so they need a Bash interpreter on `PATH`. Use **Git Bash** (installed with Git for Windows) or **WSL**, both of which already have `chmod`, so this command works unchanged from a Git Bash or WSL prompt. There's no separate Windows `chmod` equivalent needed.
+
 1. Test the guard locally before you use it with Copilot:
 
    ```bash
@@ -1324,6 +1373,19 @@ gh repo create YOUR-ORG/iphone-duo-viewer --private --source=. --remote=origin -
    echo '{"toolName":"bash","toolArgs":"{\"command\":\"ls\"}"}' | ./.github/hooks/guard.sh
    # Expected: no output
    ```
+
+   **Windows 11 Pro (Git Bash or WSL prompt):**
+
+   ```bash
+   echo '{"toolName":"bash","toolArgs":"{\"command\":\"rm -rf dist\"}"}' | ./.github/hooks/guard.sh
+   # Expected: {"permissionDecision":"deny","permissionDecisionReason":"Blocked by guardrails: destructive shell command"}
+
+   echo '{"toolName":"bash","toolArgs":"{\"command\":\"ls\"}"}' | ./.github/hooks/guard.sh
+   # Expected: no output
+   ```
+
+   > [!NOTE]
+   > Run these from Git Bash or WSL, not from PowerShell or `cmd.exe` — `guard.sh` and `format.sh` are Bash scripts and won't run directly under Windows' native shells.
 
 1. Commit and push.
 
