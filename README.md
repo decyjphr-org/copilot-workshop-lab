@@ -751,6 +751,9 @@ This prompt reads issues through the GitHub MCP server, so make sure the server 
 1. Is the list really sorted by "needs attention"? Is a stale issue ranked above a hot one?
 1. With your table, discuss why a prompt can't guarantee a deterministic sort. The model ranks the issues by reading them, not by calculating.
 1. Sketch how a **skill** fixes this. A `scripts/rank_issues.py` script fetches the issues, computes a score from last-updated age and comment activity, and returns a sorted list. The model then only writes the summaries.
+
+✅ **Checkpoint:** You can explain when a task needs a prompt file and when it needs a skill with a script. You'll build this skill in Exercise 3.2.
+
 </details>
 
 ### 🚀 **Stretch goal:** Exercise 2.5: Turn the review prompt into a shared skill
