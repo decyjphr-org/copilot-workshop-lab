@@ -91,7 +91,7 @@ Your workshop laptop already has VS Code (with the GitHub Copilot extension), Gi
 
 #### Option A: GitHub UI and Git (Recommended)
 
-1. Fork `WORKSHOP-ORG/common-agents` into `YOUR-ORG` using the GitHub UI.
+1. Import `decyjphr-org/common-agents` into `YOUR-ORG` using the GitHub UI.
 1. Clone it:
 
    ```bash
