@@ -523,7 +523,7 @@ There's no code yet, so `/init create a custom instruction with the following` h
 
 ### Exercise 1.4: Scaffold the app and check that the instructions apply
 
-1. In the app session, enter:
+1. In the app session, enter (Use `auto` model yolo!):
 
    ```text
    Scaffold the project described in the repository instructions. Render a single box
