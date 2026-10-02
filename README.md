@@ -237,9 +237,7 @@ In Lab 7 you replace this manual setup with a plugin. That's the supported way t
 
 The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (project) and `~/.copilot/agents/` (personal). There's no setting that adds a third folder. Instead, make your personal agents folder a symbolic link to the `common-agents` agents folder. Every agent in `common-agents` then loads in every session, including agents you add later.
 
-### 🧯 **Troubleshooting** 
-<details>
-<summary>If you already have a `~/.copilot/agents` folder, back it up:</summary>
+1. If you already have a `~/.copilot/agents` folder, back it up:
    ```bash
    [ -d ~/.copilot/agents ] && [ ! -L ~/.copilot/agents ] && mv ~/.copilot/agents ~/.copilot/agents.bak
    ```
@@ -270,15 +268,14 @@ The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (proje
    REM <SYMLINKD>     agents [C:\Users\YOUR-USER\projects\common-agents\.github\agents]
    ```
 
-   > [!NOTE]
-   > `mklink` only works from a `cmd.exe` prompt. Creating a symlink requires either an elevated (Administrator) prompt or Windows 11's Developer Mode turned on (**Settings → Privacy & security → For developers**).
-
-1. Restart the CLI whenever you add or change an agent.
+> [!NOTE]
+> `mklink` only works from a `cmd.exe` prompt. Creating a symlink requires either an elevated (Administrator) prompt or Windows 11's Developer Mode turned on (**Settings → Privacy & security → For developers**).
+>
+> 1. Restart the CLI whenever you add or change an agent.
 
 > [!WARNING]
 > The docs list both agent locations, but they don't mention symbolic links. If the agents don't appear, remove the link (`rm ~/.copilot/agents`, or on Windows `rmdir "%USERPROFILE%\.copilot\agents"`), create a normal folder, and copy the `.agent.md` files into it instead. Lab 7 replaces this step with a plugin.
 
-</details>
 
 🚀 **Stretch goal:** Keep personal agents out of the team repo.
 
