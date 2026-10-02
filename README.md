@@ -203,6 +203,16 @@ In Lab 7 you replace this manual setup with a plugin. That's the supported way t
    }
    ```
 
+   In Windows this would be:
+   ```jsonc
+   {
+      "skillDirectories": [
+       "C:\\Users\\azureuser\\projects\\common-agents\\.github\\skills",
+       "C:\\Users\\azureuser\\projects\\common-agents\\.claude\\skills"
+      ]
+   }
+   ```
+
    * Use absolute paths.
    * Point at the folder that **contains** the skill folders (`.github/skills`, plural). Don't point at a single skill.
    * List both folders. If you leave out `.claude/skills`, `js-to-typescript` works inside `common-agents` but nowhere else.
@@ -309,6 +319,11 @@ setx COPILOT_CUSTOM_INSTRUCTIONS_DIRS "C:\Users\YOUR-USER\projects\common-agents
 
    ```bash
    cd ~ && copilot
+   ```
+
+   In Windows it would be:
+   ```cmd
+   cd %USERPROFILE% && copilot
    ```
 
 1. Run these commands:
