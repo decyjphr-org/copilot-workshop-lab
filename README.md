@@ -537,14 +537,14 @@ There's no code yet, so `/init create a custom instruction with the following` h
 
    ```bash
    cd ~/projects/iphone-duo-viewer
-   copilot instruction
+   copilot instruction list
    ```
 
    **Windows 11 Pro (Command Prompt):**
 
    ```cmd
    cd %USERPROFILE%\projects\iphone-duo-viewer
-   copilot instruction
+   copilot instruction list
    ```
 
 ✅ **Checkpoint:** `copilot instruction` lists `.github/copilot-instructions.md` and both `*.instructions.md` files, and the scaffold follows the rules in them.
