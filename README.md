@@ -705,6 +705,16 @@ Personal instructions follow you across repositories.
 
 Open `~/projects/common-agents` in VS Code before you start.
 
+   ```bash
+   cd ~/projects/common-agents && code .
+   ```
+
+   **Windows 11 Pro (Command Prompt):**
+
+   ```cmd
+   cd %USERPROFILE%\projects\common-agents && code .
+   ```
+
 ### Exercise 2.1: Tour and fix the preloaded prompts
 
 1. Type <command/ctrl+ p> and type `Run prompt files...`
