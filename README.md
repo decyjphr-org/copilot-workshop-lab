@@ -96,6 +96,14 @@ Your workshop laptop already has VS Code (with the GitHub Copilot extension), Gi
    git clone https://github.com/YOUR-ORG/common-agents.git
    cd common-agents
    ```
+
+   **Windows 11 Pro (Command Prompt):**
+
+   ```cmd
+   cd %USERPROFILE%\projects
+   git clone https://github.com/YOUR-ORG/common-agents.git
+   cd common-agents
+   ```
 #### Look at what's included
 
 Your copy uses the standard project folders, and comes preloaded with:
@@ -130,6 +138,13 @@ common-agents/
 
    ```bash
    cd ~/projects
+   copilot
+   ```
+
+   **Windows 11 Pro (Command Prompt):**
+
+   ```cmd
+   cd %USERPROFILE%\projects
    copilot
    ```
 
@@ -525,6 +540,13 @@ There's no code yet, so `/init create a custom instruction with the following` h
    copilot instruction
    ```
 
+   **Windows 11 Pro (Command Prompt):**
+
+   ```cmd
+   cd %USERPROFILE%\projects\iphone-duo-viewer
+   copilot instruction
+   ```
+
 ✅ **Checkpoint:** `copilot instruction` lists `.github/copilot-instructions.md` and both `*.instructions.md` files, and the scaffold follows the rules in them.
 
 ### 🚀 **Stretch goal:** Exercise 1.5: Improve the instructions with `/init` and `root-instructions`
@@ -854,6 +876,15 @@ This prompt reads issues through the GitHub MCP server, so make sure the server 
    copilot
    ```
 
+   **Windows 11 Pro (Command Prompt):**
+
+   ```cmd
+   cd %USERPROFILE%\projects\iphone-duo-viewer
+   git switch -c test-review
+   REM make and commit the change
+   copilot
+   ```
+
 1. In the CLI, run:
 
    ```copilot
@@ -903,6 +934,13 @@ This prompt reads issues through the GitHub MCP server, so make sure the server 
 
    ```bash
    cd ~/projects/common-agents
+   copilot
+   ```
+
+   **Windows 11 Pro (Command Prompt):**
+
+   ```cmd
+   cd %USERPROFILE%\projects\common-agents
    copilot
    ```
 
@@ -1115,6 +1153,13 @@ A personal agent is just for you. You save it to `~/.copilot/agents/`, which is 
    # No output for my-review-style.agent.md
    ```
 
+   **Windows 11 Pro (Command Prompt):**
+
+   ```cmd
+   cd %USERPROFILE%\projects\common-agents && git status --short .github/agents
+   REM No output for my-review-style.agent.md
+   ```
+
 1. In the viewer repo, run `/agent`, select **my-review-style**, and review the `test-review` branch from Exercise 2.5.
 
 ✅ **Checkpoint:** Every finding has a suggested fix, and there's no praise or summary.
@@ -1307,6 +1352,13 @@ The cloud agent (Exercise 6.5) and the pull request in Lab 8 need the repo on Gi
 
 ```bash
 cd ~/projects/iphone-duo-viewer
+gh repo create YOUR-ORG/iphone-duo-viewer --private --source=. --remote=origin --push
+```
+
+**Windows 11 Pro (Command Prompt):**
+
+```cmd
+cd %USERPROFILE%\projects\iphone-duo-viewer
 gh repo create YOUR-ORG/iphone-duo-viewer --private --source=. --remote=origin --push
 ```
 
@@ -1508,6 +1560,22 @@ You'll **move** the files, not copy them. If the same skill is loaded from both 
    git mv .github/agents/readme-specialist.agent.md plugins/workshop-kit/com.github.copilot/agents/
    git mv .github/agents/code-explainer.agent.md    plugins/workshop-kit/com.github.copilot/agents/
    ```
+
+   **Windows 11 Pro (Command Prompt):**
+
+   ```cmd
+   cd %USERPROFILE%\projects\common-agents
+   mkdir plugins\workshop-kit\skills plugins\workshop-kit\com.github.copilot\agents
+
+   git mv .github/skills/release-validator plugins/workshop-kit/skills/
+   git mv .github/skills/code-review       plugins/workshop-kit/skills/
+   git mv .github/skills/issue-triage      plugins/workshop-kit/skills/
+   git mv .github/agents/readme-specialist.agent.md plugins/workshop-kit/com.github.copilot/agents/
+   git mv .github/agents/code-explainer.agent.md    plugins/workshop-kit/com.github.copilot/agents/
+   ```
+
+   > [!NOTE]
+   > `git mv` accepts forward slashes on Windows too, so the paths above don't need to change. Windows `mkdir` creates intermediate directories by default, so no `-p` flag is needed.
 
    Because `~/.copilot/agents` links to `.github/agents`, moving the two agents out also removes them from your personal agents. From now on, the plugin provides them.
 
