@@ -767,6 +767,10 @@ Open `~/projects/common-agents` in VS Code before you start.
    git diff --name-only $(git merge-base main HEAD)...HEAD
    ```
 
+   ```powershell
+   git diff $(git merge-base main HEAD)...HEAD
+   ```
+
    ## Standards
 
    Read and apply `.github/copilot-instructions.md` and every
