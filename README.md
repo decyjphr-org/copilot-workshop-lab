@@ -297,7 +297,7 @@ findstr /x /c:".github/agents/my-*.agent.md" "%USERPROFILE%\projects\common-agen
 > [!NOTE]
 > The `findstr /x /c:"..."` check keeps the command idempotent, so running it more than once won't duplicate the `.gitignore` entry.
 
-If you backed up any agents in step 1, move them back with a `my-` prefix, for example `mv ~/.copilot/agents.bak/reviewer.agent.md ~/.copilot/agents/my-reviewer.agent.md` (Windows: `ren "%USERPROFILE%\.copilot\agents.bak\reviewer.agent.md" "my-reviewer.agent.md"` then move it into `~/.copilot/agents`).
+If you backed up any agents in step 1, move them back with a `my-` prefix, for example `mv ~/.copilot/agents.bak/reviewer.agent.md ~/.copilot/agents/my-reviewer.agent.md` (Windows: `ren "%USERPROFILE%\.copilot\agents.bak\reviewer.agent.md" "my-reviewer.agent.md" && move "%USERPROFILE%\.copilot\agents.bak\my-reviewer.agent.md" "%USERPROFILE%\.copilot\agents\my-reviewer.agent.md"`).
 
 Restart the CLI if you restore any agents.
 
