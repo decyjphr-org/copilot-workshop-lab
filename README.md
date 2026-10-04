@@ -1032,7 +1032,16 @@ Now fix the sort-order problem from Exercise 2.4 with a skill whose script does 
 
 ### Exercise 3.3: Install community skills
 
-1. Search for and preview skills with GitHub CLI before you install them:
+ 1. Use **Customize → Skills** in the Copilot app. If the installer asks where to put the skill, choose `~/projects/common-agents/.github/skills` so it lives in your team repo.
+   1. Install **Grill me**
+   1. Install **Web Design Guidelines**. You'll use Web Design Guidelines for the viewer's controls in Lab 8.
+   1. Check whether the **impeccable design** skill is already installed or enable it
+
+   ```copilot
+   /skills list
+   ```
+
+1. You can also use `gh cli` to search for and preview skills with GitHub CLI before you install them (don't install any skills):
 
    ```bash
    gh skill search grill
@@ -1041,14 +1050,6 @@ Now fix the sort-order problem from Exercise 2.4 with a skill whose script does 
    gh skill install SKILL-NAME
    ```
 
- 1. Use **Customize → Skills** in the Copilot app. If the installer asks where to put the skill, choose `~/projects/common-agents/.github/skills` so it lives in your team repo.
-
-1. Install **Grill me** and **Web Design Guidelines**. You'll use Web Design Guidelines for the viewer's controls in Lab 8.
-1. Check whether the **impeccable design** skill is already installed:
-
-   ```copilot
-   /skills list
-   ```
 
 1. Try them out:
 
