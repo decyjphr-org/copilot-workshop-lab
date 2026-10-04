@@ -291,7 +291,7 @@ echo '.github/agents/my-*.agent.md' >> ~/projects/common-agents/.gitignore
 **Windows 11 Pro (Command Prompt):**
 
 ```cmd
-findstr /x /c:".github/agents/my-*.agent.md" "%USERPROFILE%\projects\common-agents\.gitignore" >nul 2>&1 || echo .github/agents/my-*.agent.md>>"%USERPROFILE%\projects\common-agents\.gitignore"
+findstr /l /x /c:".github/agents/my-*.agent.md" "%USERPROFILE%\projects\common-agents\.gitignore" >nul 2>&1 || echo .github/agents/my-*.agent.md>>"%USERPROFILE%\projects\common-agents\.gitignore"
 ```
 
 > [!NOTE]
