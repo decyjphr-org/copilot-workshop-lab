@@ -1104,8 +1104,14 @@ The preloaded `code-explainer` agent says "Do not edit code", but it has no `too
    Visualize the architecture with Mermaid diagrams in fenced code blocks.
    ```
 1. Commit and push. Restart the CLI. Because `~/.copilot/agents` links to this folder, the change applies everywhere.
-1. In the viewer repo, run `/agent`, select **code-explainer**, and ask: `Explain how this app's scene, parts, and layout modules fit together.`
-1. Ask it to `Fix any bugs you find.`
+1. In the viewer repo, run `/agent`, select **code-explainer**, and ask:
+   ```
+   Explain how this app's scene, parts, and layout modules fit together.
+   ```
+1. Ask it to
+   ```
+   Fix any bugs you find.
+   ```
 
 ✅ **Checkpoint:** The explanation includes a Mermaid diagram, and the agent refuses, or isn't able, to edit files when you ask it to fix bugs.
 
