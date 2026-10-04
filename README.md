@@ -959,6 +959,7 @@ This prompt reads issues through the GitHub MCP server, so make sure the server 
    Use the /release-validator skill to check release v1.0.0. Testing and security checks passed, docs are done, and Product, Marketing, and Revenue approved.
    ```
 
+1. Go to VS Code
 1. Open the generated report, tick the Security box and fill in an approver, then ask Copilot to validate again.
 
 ✅ **Checkpoint:** The first run stops with `validate.py` failures for the Security approval. The second run prints `PASS`.
