@@ -222,8 +222,8 @@ In Lab 7 you replace this manual setup with a plugin. That's the supported way t
    ```jsonc
    {
       "skillDirectories": [
-       "C:\\Users\\azureuser\\projects\\common-agents\\.github\\skills",
-       "C:\\Users\\azureuser\\projects\\common-agents\\.claude\\skills"
+       "C:\\Users\\YOUR-USER\\projects\\common-agents\\.github\\skills",
+       "C:\\Users\\YOUR-USER\\projects\\common-agents\\.claude\\skills"}},{
       ]
    }
    ```
