@@ -29,9 +29,10 @@ This split matches how most organizations work. A platform team curates shared c
 
 * Placeholders are in `CAPS`. Replace them with your own values:
   * `YOUR-ORG` is an organization or user account where you can push.
-  * `YOUR-USER` is your local macOS or Linux user name (for absolute paths).
+  * `YOUR-USER` is your local macOS, Linux, or Windows user name (for absolute paths).
   * `YOUR-HANDLE` is your GitHub username.
 * Both repositories are assumed to live in `~/projects/`. Adjust the paths if you use a different folder.
+* Commands are shown for macOS/Linux (`bash`) first. Where the Windows 11 Pro command differs, a **Windows 11 Pro** variant using the Command Prompt (`cmd.exe`) follows immediately after.
 * ✅ **Checkpoint** marks how you confirm that a step worked. Don't skip these.
 * 🧯 **Troubleshooting** lists the most common problems for that lab.
 * 🚀 **Stretch goal** items are optional. Try them if you finish early.
@@ -95,6 +96,14 @@ Your workshop laptop already has VS Code (with the GitHub Copilot extension), Gi
    git clone https://github.com/YOUR-ORG/common-agents.git
    cd common-agents
    ```
+
+   **Windows 11 Pro (Command Prompt):**
+
+   ```cmd
+   cd %USERPROFILE%\projects
+   git clone https://github.com/YOUR-ORG/common-agents.git
+   cd common-agents
+   ```
 #### Look at what's included
 
 Your copy uses the standard project folders, and comes preloaded with:
@@ -129,6 +138,13 @@ common-agents/
 
    ```bash
    cd ~/projects
+   copilot
+   ```
+
+   **Windows 11 Pro (Command Prompt):**
+
+   ```cmd
+   cd %USERPROFILE%\projects
    copilot
    ```
 
@@ -202,6 +218,16 @@ In Lab 7 you replace this manual setup with a plugin. That's the supported way t
    }
    ```
 
+   In Windows this would be:
+   ```jsonc
+   {
+      "skillDirectories": [
+       "C:\\Users\\YOUR-USER\\projects\\common-agents\\.github\\skills",
+       "C:\\Users\\YOUR-USER\\projects\\common-agents\\.claude\\skills"}},{
+      ]
+   }
+   ```
+
    * Use absolute paths.
    * Point at the folder that **contains** the skill folders (`.github/skills`, plural). Don't point at a single skill.
    * List both folders. If you leave out `.claude/skills`, `js-to-typescript` works inside `common-agents` but nowhere else.
@@ -211,11 +237,18 @@ In Lab 7 you replace this manual setup with a plugin. That's the supported way t
 
 The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (project) and `~/.copilot/agents/` (personal). There's no setting that adds a third folder. Instead, make your personal agents folder a symbolic link to the `common-agents` agents folder. Every agent in `common-agents` then loads in every session, including agents you add later.
 
-### 🧯 **Troubleshooting** 
-<details>
-<summary>If you already have a `~/.copilot/agents` folder, back it up:</summary>
+1. If you already have a `~/.copilot/agents` folder, back it up:
    ```bash
    [ -d ~/.copilot/agents ] && [ ! -L ~/.copilot/agents ] && mv ~/.copilot/agents ~/.copilot/agents.bak
+   ```
+
+   **Windows 11 Pro (Command Prompt):**
+
+   ```cmd
+   if exist "%USERPROFILE%\.copilot\agents" (
+     fsutil reparsepoint query "%USERPROFILE%\.copilot\agents" >nul 2>&1
+     if errorlevel 1 ren "%USERPROFILE%\.copilot\agents" "agents.bak"
+   )
    ```
 
 1. Create the link and check it:
@@ -226,12 +259,23 @@ The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (proje
    # ~/.copilot/agents -> /Users/YOUR-USER/projects/common-agents/.github/agents
    ```
 
-1. Restart the CLI whenever you add or change an agent.
+   **Windows 11 Pro (Command Prompt, run as Administrator, or with Developer Mode enabled):**
+
+   ```cmd
+   mklink /D "%USERPROFILE%\.copilot\agents" "%USERPROFILE%\projects\common-agents\.github\agents"
+   dir "%USERPROFILE%\.copilot"
+   REM Look for a line like this in the directory listing for the parent ".copilot" folder:
+   REM <SYMLINKD>     agents [C:\Users\YOUR-USER\projects\common-agents\.github\agents]
+   ```
+
+> [!NOTE]
+> `mklink` only works from a `cmd.exe` prompt. Creating a symlink requires either an elevated (Administrator) prompt or Windows 11's Developer Mode turned on (**Settings → Privacy & security → For developers**).
+>
+> 1. Restart the CLI whenever you add or change an agent.
 
 > [!WARNING]
-> The docs list both agent locations, but they don't mention symbolic links. If the agents don't appear, remove the link (`rm ~/.copilot/agents`), create a normal folder, and copy the `.agent.md` files into it instead. Lab 7 replaces this step with a plugin.
+> The docs list both agent locations, but they don't mention symbolic links. If the agents don't appear, remove the link (`rm ~/.copilot/agents`, or on Windows `rmdir "%USERPROFILE%\.copilot\agents"`), create a normal folder, and copy the `.agent.md` files into it instead. Lab 7 replaces this step with a plugin.
 
-</details>
 
 🚀 **Stretch goal:** Keep personal agents out of the team repo.
 
@@ -244,7 +288,16 @@ Any agent you save to `~/.copilot/agents` is now written into `common-agents/.gi
 echo '.github/agents/my-*.agent.md' >> ~/projects/common-agents/.gitignore
 ```
 
-If you backed up any agents in step 1, move them back with a `my-` prefix, for example `mv ~/.copilot/agents.bak/reviewer.agent.md ~/.copilot/agents/my-reviewer.agent.md`.
+**Windows 11 Pro (Command Prompt):**
+
+```cmd
+findstr /l /x /c:".github/agents/my-*.agent.md" "%USERPROFILE%\projects\common-agents\.gitignore" >nul 2>&1 || echo .github/agents/my-*.agent.md>>"%USERPROFILE%\projects\common-agents\.gitignore"
+```
+
+> [!NOTE]
+> The `findstr /x /c:"..."` check keeps the command idempotent, so running it more than once won't duplicate the `.gitignore` entry.
+
+If you backed up any agents in step 1, move them back with a `my-` prefix, for example `mv ~/.copilot/agents.bak/reviewer.agent.md ~/.copilot/agents/my-reviewer.agent.md` (Windows: `ren "%USERPROFILE%\.copilot\agents.bak\reviewer.agent.md" "my-reviewer.agent.md" && move "%USERPROFILE%\.copilot\agents.bak\my-reviewer.agent.md" "%USERPROFILE%\.copilot\agents\my-reviewer.agent.md"`).
 
 Restart the CLI if you restore any agents.
 
@@ -261,6 +314,15 @@ If `common-agents` has a folder of shared `*.instructions.md` files, add it to y
 export COPILOT_CUSTOM_INSTRUCTIONS_DIRS=/Users/YOUR-USER/projects/common-agents/PATH-TO-INSTRUCTIONS
 ```
 
+**Windows 11 Pro (Command Prompt, persists for new sessions):**
+
+```cmd
+setx COPILOT_CUSTOM_INSTRUCTIONS_DIRS "C:\Users\YOUR-USER\projects\common-agents\PATH-TO-INSTRUCTIONS"
+```
+
+> [!NOTE]
+> `setx` writes the variable for future Command Prompt sessions; it doesn't affect the one you ran it in. Open a new Command Prompt window afterward.
+
 </details>
 
 #### Step 4: Verify from outside the repository
@@ -269,6 +331,11 @@ export COPILOT_CUSTOM_INSTRUCTIONS_DIRS=/Users/YOUR-USER/projects/common-agents/
 
    ```bash
    cd ~ && copilot
+   ```
+
+   In Windows it would be:
+   ```cmd
+   cd %USERPROFILE% && copilot
    ```
 
 1. Run these commands:
@@ -296,7 +363,7 @@ export COPILOT_CUSTOM_INSTRUCTIONS_DIRS=/Users/YOUR-USER/projects/common-agents/
 * **The CLI rejects your token.** Classic personal access tokens (`ghp_`) aren't supported. Use `/login`, or a fine-grained PAT with the **Copilot Requests** permission in `COPILOT_GITHUB_TOKEN`.
 * **The Copilot app shows an authorization error.** The app has its own policy toggle, separate from the CLI. Ask your admin to enable it.
 * **`/skills list` doesn't show the common skills.** Check the path in `skillDirectories`: it must be absolute, it must exist, and it must end in `.github/skills`. Open `/settings` and look at the **Problems** tab for errors in the file.
-* **`ls -l ~/.copilot/agents` lists files instead of showing a link.** `~/.copilot/agents` was still a normal folder when you ran `ln -s`, so the link was created *inside* it, as `~/.copilot/agents/agents`. Remove that link (`rm ~/.copilot/agents/agents`), run the backup command from Step 2, then create the link again.
+* **The agents link was not created correctly.** On macOS/Linux, if `ls -l ~/.copilot/agents` lists files, the existing folder caused `ln -s` to create `~/.copilot/agents/agents`; remove it with `rm ~/.copilot/agents/agents`, run the backup command from Step 2, and create the link again. On Windows, inspect the parent with `dir "%USERPROFILE%\.copilot"` and look for a `<SYMLINKD> agents` entry. If `mklink` reported that the file already exists, run the backup command from Step 2 and rerun `mklink`.
 
 </details>
 
@@ -315,6 +382,14 @@ export COPILOT_CUSTOM_INSTRUCTIONS_DIRS=/Users/YOUR-USER/projects/common-agents/
    ```bash
    mkdir -p ~/projects/iphone-duo-viewer
    cd ~/projects/iphone-duo-viewer
+   git init -b main
+   ```
+
+   **Windows 11 Pro (Command Prompt):**
+
+   ```cmd
+   mkdir "%USERPROFILE%\projects\iphone-duo-viewer"
+   cd /d "%USERPROFILE%\projects\iphone-duo-viewer"
    git init -b main
    ```
 
@@ -445,7 +520,7 @@ There's no code yet, so `/init create a custom instruction with the following` h
 
 ### Exercise 1.4: Scaffold the app and check that the instructions apply
 
-1. In the app session, enter:
+1. In the app session, enter (Use `auto` model yolo!):
 
    ```text
    Scaffold the project described in the repository instructions. Render a single box
@@ -459,7 +534,14 @@ There's no code yet, so `/init create a custom instruction with the following` h
 
    ```bash
    cd ~/projects/iphone-duo-viewer
-   copilot instruction
+   copilot instruction list
+   ```
+
+   **Windows 11 Pro (Command Prompt):**
+
+   ```cmd
+   cd %USERPROFILE%\projects\iphone-duo-viewer
+   copilot instruction list
    ```
 
 ✅ **Checkpoint:** `copilot instruction` lists `.github/copilot-instructions.md` and both `*.instructions.md` files, and the scaffold follows the rules in them.
@@ -620,6 +702,16 @@ Personal instructions follow you across repositories.
 
 Open `~/projects/common-agents` in VS Code before you start.
 
+   ```bash
+   cd ~/projects/common-agents && code .
+   ```
+
+   **Windows 11 Pro (Command Prompt):**
+
+   ```cmd
+   cd %USERPROFILE%\projects\common-agents && code .
+   ```
+
 ### Exercise 2.1: Tour and fix the preloaded prompts
 
 1. Type <command/ctrl+ p> and type `Run prompt files...`
@@ -673,6 +765,10 @@ Open `~/projects/common-agents` in VS Code before you start.
 
    ```bash
    git diff --name-only $(git merge-base main HEAD)...HEAD
+   ```
+
+   ```powershell
+   git diff $(git merge-base main HEAD)...HEAD
    ```
 
    ## Standards
@@ -791,6 +887,15 @@ This prompt reads issues through the GitHub MCP server, so make sure the server 
    copilot
    ```
 
+   **Windows 11 Pro (Command Prompt):**
+
+   ```cmd
+   cd %USERPROFILE%\projects\iphone-duo-viewer
+   git switch -c test-review
+   REM make and commit the change
+   copilot
+   ```
+
 1. In the CLI, run:
 
    ```copilot
@@ -843,10 +948,18 @@ This prompt reads issues through the GitHub MCP server, so make sure the server 
    copilot
    ```
 
+   **Windows 11 Pro (Command Prompt):**
+
+   ```cmd
+   cd %USERPROFILE%\projects\common-agents
+   copilot
+   ```
+
    ```copilot
    Use the /release-validator skill to check release v1.0.0. Testing and security checks passed, docs are done, and Product, Marketing, and Revenue approved.
    ```
 
+1. Go to VS Code
 1. Open the generated report, tick the Security box and fill in an approver, then ask Copilot to validate again.
 
 ✅ **Checkpoint:** The first run stops with `validate.py` failures for the Security approval. The second run prints `PASS`.
@@ -897,7 +1010,7 @@ Now fix the sort-order problem from Exercise 2.4 with a skill whose script does 
 1. Run `/skills reload`, then:
 
    ```copilot
-   Use the /issue-triage skill on @github-community-projects/safe-settings.
+   Use the /issue-triage skill on @actions/starter-workflows
    ```
 
 1. Commit and push.
@@ -919,7 +1032,16 @@ Now fix the sort-order problem from Exercise 2.4 with a skill whose script does 
 
 ### Exercise 3.3: Install community skills
 
-1. Search for and preview skills with GitHub CLI before you install them:
+ 1. Use **Customize → Skills** in the Copilot app. If the installer asks where to put the skill, choose `~/projects/common-agents/.github/skills` so it lives in your team repo.
+   1. Install **Grill me**
+   1. Install **Web Design Guidelines**. You'll use Web Design Guidelines for the viewer's controls in Lab 8.
+   1. Check whether the **impeccable design** skill is already installed or enable it
+
+   ```copilot
+   /skills list
+   ```
+
+1. You can also use `gh cli` to search for and preview skills with GitHub CLI before you install them (don't install any skills):
 
    ```bash
    gh skill search grill
@@ -928,14 +1050,6 @@ Now fix the sort-order problem from Exercise 2.4 with a skill whose script does 
    gh skill install SKILL-NAME
    ```
 
-   Or use **Customize → Skills** in the Copilot app. If the installer asks where to put the skill, choose `~/projects/common-agents/.github/skills` so it lives in your team repo.
-
-1. Install **Grill me** and **Web Design Guidelines**. You'll use Web Design Guidelines for the viewer's controls in Lab 8.
-1. Check whether the **impeccable design** skill is already installed:
-
-   ```copilot
-   /skills list
-   ```
 
 1. Try them out:
 
@@ -985,10 +1099,21 @@ The preloaded `code-explainer` agent says "Do not edit code", but it has no `too
    ---
    ```
 
-1. In the body, change the Mermaid line to: `Visualize the architecture with Mermaid diagrams in fenced code blocks.`
+1. In the body, change the Mermaid line to:
+   ```
+   Visualize the architecture with Mermaid diagrams in fenced code blocks.
+   ```
 1. Commit and push. Restart the CLI. Because `~/.copilot/agents` links to this folder, the change applies everywhere.
-1. In the viewer repo, run `/agent`, select **code-explainer**, and ask: `Explain how this app's scene, parts, and layout modules fit together.`
-1. Ask it to `Fix any bugs you find.`
+1. In the viewer repo, run `/agent`, select **code-explainer**,
+1. Ask:
+   ```
+   Explain how this app's scene, parts, and layout modules fit together.
+   ```
+1. Ask it to
+   ```
+   Fix any bugs you find.
+   ```
+1. It should not do any edits
 
 ✅ **Checkpoint:** The explanation includes a Mermaid diagram, and the agent refuses, or isn't able, to edit files when you ask it to fix bugs.
 
@@ -1050,6 +1175,13 @@ A personal agent is just for you. You save it to `~/.copilot/agents/`, which is 
    ```bash
    cd ~/projects/common-agents && git status --short .github/agents
    # No output for my-review-style.agent.md
+   ```
+
+   **Windows 11 Pro (Command Prompt):**
+
+   ```cmd
+   cd %USERPROFILE%\projects\common-agents && git status --short .github/agents
+   REM No output for my-review-style.agent.md
    ```
 
 1. In the viewer repo, run `/agent`, select **my-review-style**, and review the `test-review` branch from Exercise 2.5.
@@ -1153,6 +1285,15 @@ This exercise reuses the personal instructions from Exercise 1.7.
    export CONTEXT7_API_KEY=YOUR-API-KEY
    ```
 
+   **Windows 11 Pro (Command Prompt, persists for new sessions):**
+
+   ```cmd
+   setx CONTEXT7_API_KEY "YOUR-API-KEY"
+   ```
+
+   > [!NOTE]
+   > `setx` writes the variable for future Command Prompt sessions; it doesn't affect the one you ran it in. Open a new Command Prompt window afterward.
+
 ### Exercise 5.2: Add a repository MCP configuration
 
 1. Create `~/projects/iphone-duo-viewer/.github/mcp.json`:
@@ -1238,6 +1379,13 @@ cd ~/projects/iphone-duo-viewer
 gh repo create YOUR-ORG/iphone-duo-viewer --private --source=. --remote=origin --push
 ```
 
+**Windows 11 Pro (Command Prompt):**
+
+```cmd
+cd %USERPROFILE%\projects\iphone-duo-viewer
+gh repo create YOUR-ORG/iphone-duo-viewer --private --source=. --remote=origin --push
+```
+
 ✅ **Checkpoint:** `git remote -v` shows `origin` pointing to `YOUR-ORG/iphone-duo-viewer`.
 
 ### Exercise 6.2: Create the hook configuration
@@ -1315,6 +1463,9 @@ gh repo create YOUR-ORG/iphone-duo-viewer --private --source=. --remote=origin -
    chmod +x .github/hooks/guard.sh .github/hooks/format.sh
    ```
 
+   > [!NOTE]
+   > **Windows 11 Pro:** The hook scripts above are Bash scripts, and `guardrails.json` invokes them with the `"bash"` key, so they need a Bash interpreter on `PATH`. Use **Git Bash** (installed with Git for Windows) or **WSL**, both of which already have `chmod`, so this command works unchanged from a Git Bash or WSL prompt. There's no separate Windows `chmod` equivalent needed.
+
 1. Test the guard locally before you use it with Copilot:
 
    ```bash
@@ -1324,6 +1475,19 @@ gh repo create YOUR-ORG/iphone-duo-viewer --private --source=. --remote=origin -
    echo '{"toolName":"bash","toolArgs":"{\"command\":\"ls\"}"}' | ./.github/hooks/guard.sh
    # Expected: no output
    ```
+
+   **Windows 11 Pro (Git Bash or WSL prompt):**
+
+   ```bash
+   echo '{"toolName":"bash","toolArgs":"{\"command\":\"rm -rf dist\"}"}' | ./.github/hooks/guard.sh
+   # Expected: {"permissionDecision":"deny","permissionDecisionReason":"Blocked by guardrails: destructive shell command"}
+
+   echo '{"toolName":"bash","toolArgs":"{\"command\":\"ls\"}"}' | ./.github/hooks/guard.sh
+   # Expected: no output
+   ```
+
+   > [!NOTE]
+   > Run these from Git Bash or WSL, not from PowerShell or `cmd.exe` — `guard.sh` and `format.sh` are Bash scripts and won't run directly under Windows' native shells.
 
 1. Commit and push.
 
@@ -1420,6 +1584,22 @@ You'll **move** the files, not copy them. If the same skill is loaded from both 
    git mv .github/agents/readme-specialist.agent.md plugins/workshop-kit/com.github.copilot/agents/
    git mv .github/agents/code-explainer.agent.md    plugins/workshop-kit/com.github.copilot/agents/
    ```
+
+   **Windows 11 Pro (Command Prompt):**
+
+   ```cmd
+   cd %USERPROFILE%\projects\common-agents
+   mkdir plugins\workshop-kit\skills plugins\workshop-kit\com.github.copilot\agents
+
+   git mv .github/skills/release-validator plugins/workshop-kit/skills/
+   git mv .github/skills/code-review       plugins/workshop-kit/skills/
+   git mv .github/skills/issue-triage      plugins/workshop-kit/skills/
+   git mv .github/agents/readme-specialist.agent.md plugins/workshop-kit/com.github.copilot/agents/
+   git mv .github/agents/code-explainer.agent.md    plugins/workshop-kit/com.github.copilot/agents/
+   ```
+
+   > [!NOTE]
+   > `git mv` accepts forward slashes on Windows too, so the paths above don't need to change. Windows `mkdir` creates intermediate directories by default, so no `-p` flag is needed.
 
    Because `~/.copilot/agents` links to `.github/agents`, moving the two agents out also removes them from your personal agents. From now on, the plugin provides them.
 
