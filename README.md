@@ -1113,6 +1113,7 @@ The preloaded `code-explainer` agent says "Do not edit code", but it has no `too
    ```
    Fix any bugs you find.
    ```
+1. It should not do any edits
 
 ✅ **Checkpoint:** The explanation includes a Mermaid diagram, and the agent refuses, or isn't able, to edit files when you ask it to fix bugs.
 
