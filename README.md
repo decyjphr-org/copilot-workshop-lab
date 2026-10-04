@@ -223,7 +223,7 @@ In Lab 7 you replace this manual setup with a plugin. That's the supported way t
    {
       "skillDirectories": [
        "C:\\Users\\YOUR-USER\\projects\\common-agents\\.github\\skills",
-       "C:\\Users\\YOUR-USER\\projects\\common-agents\\.claude\\skills"}},{
+       "C:\\Users\\YOUR-USER\\projects\\common-agents\\.claude\\skills"
       ]
    }
    ```
