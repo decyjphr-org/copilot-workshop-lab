@@ -1010,7 +1010,7 @@ Now fix the sort-order problem from Exercise 2.4 with a skill whose script does 
 1. Run `/skills reload`, then:
 
    ```copilot
-   Use the /issue-triage skill on @microsoft/vscode.
+   Use the /issue-triage skill on @actions/starter-workflows
    ```
 
 1. Commit and push.
