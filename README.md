@@ -1041,7 +1041,7 @@ Now fix the sort-order problem from Exercise 2.4 with a skill whose script does 
    gh skill install SKILL-NAME
    ```
 
-   Or use **Customize → Skills** in the Copilot app. If the installer asks where to put the skill, choose `~/projects/common-agents/.github/skills` so it lives in your team repo.
+ 1. Use **Customize → Skills** in the Copilot app. If the installer asks where to put the skill, choose `~/projects/common-agents/.github/skills` so it lives in your team repo.
 
 1. Install **Grill me** and **Web Design Guidelines**. You'll use Web Design Guidelines for the viewer's controls in Lab 8.
 1. Check whether the **impeccable design** skill is already installed:
