@@ -363,7 +363,7 @@ setx COPILOT_CUSTOM_INSTRUCTIONS_DIRS "C:\Users\YOUR-USER\projects\common-agents
 * **The CLI rejects your token.** Classic personal access tokens (`ghp_`) aren't supported. Use `/login`, or a fine-grained PAT with the **Copilot Requests** permission in `COPILOT_GITHUB_TOKEN`.
 * **The Copilot app shows an authorization error.** The app has its own policy toggle, separate from the CLI. Ask your admin to enable it.
 * **`/skills list` doesn't show the common skills.** Check the path in `skillDirectories`: it must be absolute, it must exist, and it must end in `.github/skills`. Open `/settings` and look at the **Problems** tab for errors in the file.
-* **`ls -l ~/.copilot/agents` (or `dir "%USERPROFILE%\.copilot\agents"` on Windows) lists files instead of showing a link.** `~/.copilot/agents` was still a normal folder when you ran `ln -s` (or `mklink`), so the link was created *inside* it, as `~/.copilot/agents/agents`. Remove that link (`rm ~/.copilot/agents/agents`, or on Windows `rmdir "%USERPROFILE%\.copilot\agents\agents"`), run the backup command from Step 2, then create the link again.
+* **The agents link was not created correctly.** On macOS/Linux, if `ls -l ~/.copilot/agents` lists files, the existing folder caused `ln -s` to create `~/.copilot/agents/agents`; remove it with `rm ~/.copilot/agents/agents`, run the backup command from Step 2, and create the link again. On Windows, inspect the parent with `dir "%USERPROFILE%\.copilot"` and look for a `<SYMLINKD> agents` entry. If `mklink` reported that the file already exists, run the backup command from Step 2 and rerun `mklink`.
 
 </details>
 
