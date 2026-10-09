@@ -1,11 +1,15 @@
 # Own your Copilot: Hands-on lab exercises
 
+**Start here:** Follow the [participant setup guide](setup.md) before beginning Lab 0.
+**Public setup site:** <https://decyjphr-org.github.io/copilot-workshop-lab/>
+
 These exercises go with the *Own your Copilot* workshop sessions. You work in two repositories the whole time:
 
 * **`common-agents`** is your team's central repository of prompt files, skills, and agents. You build it out in Labs 2–4. In Lab 7 you turn it into a plugin marketplace.
 * **`iphone-duo-viewer`** is a product repository you create locally in Lab 1. It consumes what's in `common-agents`, adds its own MCP servers and hooks, and becomes the keystone app in Lab 8.
 
 This split matches how most organizations work. A platform team curates shared customizations once, and product teams use them everywhere.
+
 
 ## How the pieces fit together
 
