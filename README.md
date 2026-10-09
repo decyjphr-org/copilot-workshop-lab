@@ -1,11 +1,25 @@
 # Own your Copilot: Hands-on lab exercises
 
+**Start here:** Follow the [participant setup guide](setup.md) before beginning Lab 0.
+**Public setup site:** <https://decyjphr-org.github.io/copilot-workshop-lab/>
+
 These exercises go with the *Own your Copilot* workshop sessions. You work in two repositories the whole time:
 
 * **`common-agents`** is your team's central repository of prompt files, skills, and agents. You build it out in Labs 2–4. In Lab 7 you turn it into a plugin marketplace.
 * **`iphone-duo-viewer`** is a product repository you create locally in Lab 1. It consumes what's in `common-agents`, adds its own MCP servers and hooks, and becomes the keystone app in Lab 8.
 
 This split matches how most organizations work. A platform team curates shared customizations once, and product teams use them everywhere.
+
+### Publishing the setup page (facilitators)
+
+GitHub Pages renders `setup.md` as the site's landing page using `_config.yml`.
+In repository **Settings -> Pages**, use **Deploy from a branch**, select
+**main** and **/ (root)**, and save. Merge setup-page changes into `main` to
+publish them. Keep this repository public so participants can open the site
+without signing in to GitHub.
+
+Replace the slides placeholder in `setup.md` with the PDF download link when
+it is available. Never add participant credentials to the public repository.
 
 ## How the pieces fit together
 
