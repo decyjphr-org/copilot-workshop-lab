@@ -10,16 +10,6 @@ These exercises go with the *Own your Copilot* workshop sessions. You work in tw
 
 This split matches how most organizations work. A platform team curates shared customizations once, and product teams use them everywhere.
 
-### Publishing the setup page (facilitators)
-
-GitHub Pages renders `setup.md` as the site's landing page using `_config.yml`.
-In repository **Settings -> Pages**, use **Deploy from a branch**, select
-**main** and **/ (root)**, and save. Merge setup-page changes into `main` to
-publish them. Keep this repository public so participants can open the site
-without signing in to GitHub.
-
-Replace the slides placeholder in `setup.md` with the PDF download link when
-it is available. Never add participant credentials to the public repository.
 
 ## How the pieces fit together
 
