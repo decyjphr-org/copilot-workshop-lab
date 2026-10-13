@@ -30,16 +30,41 @@ The Tech Specs page also covers the chip, cameras, battery, modem, and a diagram
    Turn this scaffold into an app to view the iPhone Duo. Do not stop until you have a
    good 3D model of the iPhone Duo.
 
-   Use three.js and put all the parts in a grid.
+   Setup
 
-   Render to an HTML canvas and wire up the Knolling toggle. When knolling is on, lay out
-   every component in a non-overlapping, aligned grid with a straight-on view. When it's
-   off, return smoothly to the exploded view. Add a setting to control the transition.
-   Knolling means taking every piece of the phone, laying it out in a grid, and
-   aligning everything perfectly.
+   Create an app to view Phone Duo app. Do not stop until you have a good 3d model of IPhone Duo.
 
-   Use context7 for the current three.js API. Use the dimensions and display specs from
-   https://www.apple.com/iphone-duo/specs/ and keep them in src/specs.ts.
+   Use 3js - put all the parts in a grid,
+
+   Use HTML Canvas API and add a Knolling toggle to layout all the components in a non-overlapping aligned grid with a straight on view and smooth return to the exploded view to the exploded view and I want a setting to control it. This is where I'll take every piece of the phone and lay it out in a grid and perfectly align everything.
+
+   The iPhone Duo was announced at Apple Park on September 9, 2026, alongside the iPhone 18 Pro and iPhone 18 Pro Max, and is scheduled for release on October 23, 2026. Here's where to find each thing you listed. Wikipedia
+
+   Dimensions and specs: Apple's official Tech Specs page (apple.com/iphone-duo/specs) is the authoritative source. It includes labeled dimension diagrams for both the open and closed states. The key numbers:
+
+   - Open: 6.48 inches (164.6 mm) wide, 4.64 inches (117.8 mm) tall, and 0.21 inch (5.2 mm) deep. Apple
+   - Closed: 3.31 inches (84.1 mm) wide, the same 117.8 mm tall, and 0.44 inch (11.3 mm) deep, weighing 8.96 ounces (254 grams). Apple
+   - Displays: a 7.6-inch inner folding OLED at 1878×2670 (430 ppi) and a 5.4-inch outer OLED at 1398×2034 (460 ppi). Apple
+
+   The same page also covers the chip, cameras, battery, the modem, and a diagram of the buttons and connectors.
+
+   The announcement: Apple Newsroom's "Apple unveils iPhone Duo" press release is the primary source. For summaries, Tom's Guide and iDrop News both have detailed write-ups, and Wikipedia's iPhone Duo article gives background and history.
+
+   References:
+
+   https://www.apple.com/iphone-duo/specs/
+
+   https://en.wikipedia.org/wiki/IPhone_Duo
+
+   https://www.phonerepairguru.com/news/g331e94rfbdqe55zzrh4qzj9w36xyl
+
+   https://wccftech.com/behold-the-apple-iphone-duo-apples-first-2000-juggernaut-replete-with-a-7-6-inch-inner-screen-a-hinge-made-up-of-100-individual-components-and-a-dual-battery-architecture/
+
+   https://www.appleheadlines.com/iphone-duo/
+
+   Pictures of sample app
+
+   see attached
    ```
 
 1. Review the plan. Push back on anything that ignores the repository instructions. Then approve it.
