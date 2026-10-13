@@ -28,7 +28,7 @@
 > ✅ **Checkpoint:** `/mcp show context7` lists its tools, and the answer includes a Context7 tool call.
 
 > [!TIP]
-> MCP servers configured for a repository or for the CLI are also available in the Copilot app. If Context7 can't connect in the app, the app may not see your shell's environment variables. Start the app from a terminal with `copilot app`.
+> MCP servers configured for a repository or for the CLI are also available in the Copilot app. If Context7 cannot connect after using the OAuth endpoint, open its MCP settings and authenticate again.
 
 ### 🧯 **Troubleshooting (Lab 5)**
 
