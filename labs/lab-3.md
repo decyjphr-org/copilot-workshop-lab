@@ -2,7 +2,7 @@
 
 **Goal:** Study a well-built skill that bundles instructions, a script, reference material, and a template. Then build your own with `/create-skill`, and install community skills.
 
-**Repo:** `common-agents` · **Surface:** CLI or Copilot app
+**Repo:** `common-agents` · **Surface:** VS Code or CLI or Copilot app
 
 ### Exercise 3.1: Take apart the `release-validator` skill
 
