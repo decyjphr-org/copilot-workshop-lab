@@ -53,6 +53,7 @@
 
 ### Exercise 3.2: Build an `issue-triage` skill with `/create-skill`
 
+**Stay in VS Code**
 Now fix the sort-order problem discussed in optional [Exercise 2.4](lab-2.md#-stretch-goal-exercise-24-discuss-the-sort-order-problem) with a skill whose script does the ranking. You can do this without that stretch goal: a prompt alone cannot guarantee a deterministic attention order; the script computes the score and the model summarizes its sorted results.
 
 1. In the same session, run `/create-skill` and paste:
