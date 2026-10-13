@@ -30,13 +30,9 @@ The Tech Specs page also covers the chip, cameras, battery, modem, and a diagram
    Turn this scaffold into an app to view the iPhone Duo. Do not stop until you have a
    good 3D model of the iPhone Duo.
 
-   Setup
-
-   Create an app to view Phone Duo app. Do not stop until you have a good 3d model of IPhone Duo.
-
-   Use 3js - put all the parts in a grid,
-
-   Use HTML Canvas API and add a Knolling toggle to layout all the components in a non-overlapping aligned grid with a straight on view and smooth return to the exploded view to the exploded view and I want a setting to control it. This is where I'll take every piece of the phone and lay it out in a grid and perfectly align everything.
+   Use three.js and render to an HTML canvas. Add a Knolling toggle that lays out every
+   component in a non-overlapping, aligned grid with a straight-on view. When knolling is
+   turned off, return smoothly to the exploded view. Add a setting to control the transition.
 
    The iPhone Duo was announced at Apple Park on September 9, 2026, alongside the iPhone 18 Pro and iPhone 18 Pro Max, and is scheduled for release on October 23, 2026. Here's where to find each thing you listed. Wikipedia
 
