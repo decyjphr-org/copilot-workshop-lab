@@ -44,25 +44,6 @@ The preloaded `code-explainer` agent says "Do not edit code", but it has no `too
 > [!IMPORTANT]
 > ✅ **Checkpoint:** The explanation includes a Mermaid diagram, and the agent refuses, or isn't able, to edit files when you ask it to fix bugs.
 
-### Exercise 4.5: See personal instructions shape agent output
-
-If you completed optional [Exercise 1.7](lab-1.md#-stretch-goal-exercise-17-add-personal-custom-instructions), this exercise reuses your personal instructions. Otherwise, add “Use TypeScript, make this a command-line program, and use concise plain language” to the prompts below. You can compare the output again after setting personal instructions.
-
-1. Open [Copilot Chat on GitHub.com](https://github.com/copilot) in your personal space.
-1. Ask:
-
-   ```text
-   How can I trace Agent and Sub agent calls in a Copilot session in VSCode.
-   ```
-
-1. Follow up with:
-
-   ```text
-   Show me an example code that will parse the log and create a mermaid diagram of the calls
-   ```
-
-> [!IMPORTANT]
-> ✅ **Checkpoint:** The parser is a TypeScript command-line program, and the response follows your plain-language rules. If you completed optional Exercise 4.4, run it on your coordinator session log and paste the Mermaid output into a Markdown preview. Otherwise, ask Copilot to provide a small synthetic log containing one coordinator call and two subagent calls, document that input format, and run the parser on it; no coordinator setup is required.
 
 ### 🧯 **Troubleshooting (Lab 4)**
 
@@ -198,6 +179,30 @@ Repository:   .github/agents/reviewer.agent.md  ← wins
 
 </details>
 
+### 🚀 **Stretch goal:** Exercise 4.5: See personal instructions shape agent output
+
+<details>
+<summary>Use personal custom instructions with agent</summary>
+
+If you completed optional [Exercise 1.7](lab-1.md#-stretch-goal-exercise-17-add-personal-custom-instructions), this exercise reuses your personal instructions. Otherwise, add “Use TypeScript, make this a command-line program, and use concise plain language” to the prompts below. You can compare the output again after setting personal instructions.
+
+1. Open [Copilot Chat on GitHub.com](https://github.com/copilot) in your personal space.
+1. Ask:
+
+   ```text
+   How can I trace Agent and Sub agent calls in a Copilot session in VSCode.
+   ```
+
+1. Follow up with:
+
+   ```text
+   Show me an example code that will parse the log and create a mermaid diagram of the calls
+   ```
+
+> [!IMPORTANT]
+> ✅ **Checkpoint:** The parser is a TypeScript command-line program, and the response follows your plain-language rules. If you completed optional Exercise 4.4, run it on your coordinator session log and paste the Mermaid output into a Markdown preview. Otherwise, ask Copilot to provide a small synthetic log containing one coordinator call and two subagent calls, document that input format, and run the parser on it; no coordinator setup is required.
+
+</details>
 ---
 
 [← Previous: Lab 3](lab-3.md) · [README ↑](../README.md#own-your-copilot-hands-on-lab-exercises) · [Next: Lab 5 →](lab-5.md)
