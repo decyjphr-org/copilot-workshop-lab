@@ -1,6 +1,6 @@
 ## Lab 5: MCP servers
 
-**Goal:** Give the a global MCP configuration so every contributor gets up-to-date three.js documentation, and use the CLI's built-in browser automation to check the viewer.
+**Goal:** Give the viewer a global MCP configuration so every contributor gets up-to-date three.js documentation, and use the CLI's built-in browser automation to check the viewer.
 
 **Repo:** `iphone-duo-viewer` · **Surface:** CLI, Copilot app
 
