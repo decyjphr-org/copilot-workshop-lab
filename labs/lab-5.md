@@ -4,53 +4,25 @@
 
 **Repo:** `iphone-duo-viewer` · **Surface:** CLI, Copilot app
 
-### Exercise 5.1: Get a Context7 API key
+### Exercise 5.1: Setup Context7 MCP
 
 1. Open the Context7 page in the GitHub MCP Registry: [github.com/mcp/upstash/context7](https://github.com/mcp/upstash/context7).
-1. Follow the steps there to sign up and create an API key.
-1. Add the key to your shell profile, not to the repo:
-
-   ```bash
-   export CONTEXT7_API_KEY=YOUR-API-KEY
+1. Follow the steps there to sign up and create an account
+2. In `Github Copilot App` add `Context7` as MCP
+3. Edit MCP Configuration and correct the URL to use OAuth
+   ```diff
+   - "url": "https://mcp.context7.com/mcp"
+   + "url": "https://mcp.context7.com/mcp/oauth"
    ```
-
-   **Windows 11 Pro (Command Prompt, persists for new sessions):**
-
-   ```cmd
-   setx CONTEXT7_API_KEY "YOUR-API-KEY"
-   ```
-
-   > [!NOTE]
-   > `setx` writes the variable for future Command Prompt sessions; it doesn't affect the one you ran it in. Open a new Command Prompt window afterward.
-
-### Exercise 5.2: Add a repository MCP configuration
-
-1. Create `~/projects/iphone-duo-viewer/.github/mcp.json`:
-
-   ```json
-   {
-     "mcpServers": {
-       "context7": {
-         "type": "http",
-         "url": "https://mcp.context7.com/mcp",
-         "headers": { "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}" },
-         "tools": ["*"]
-       }
-     }
-   }
-   ```
-
-   The file references the environment variable, so it's safe to commit. The CLI expands variables in `headers`.
-
-1. Commit the file.
-1. Open a new terminal (so it has `CONTEXT7_API_KEY`), start `copilot` in the viewer repo, and confirm folder trust if prompted. The CLI skips project MCP servers in folders you haven't trusted.
-1. Check the server:
+4. `Sign in` and confirm if prompted.
+   
+5. Check the server:
 
    ```copilot
    /mcp show context7
    ```
 
-1. Ask: `Use context7 to show the current three.js API for OrbitControls damping, then apply it to the viewer.`
+6. Ask: `Use context7 to show the current three.js API for OrbitControls damping, then apply it to the viewer.`
 
 > [!IMPORTANT]
 > ✅ **Checkpoint:** `/mcp show context7` lists its tools, and the answer includes a Context7 tool call.
@@ -69,7 +41,7 @@
 
 </details>
 
-### 🚀 **Stretch goal:** Exercise 5.3: Check the viewer with the built-in Playwright server
+### 🚀 **Stretch goal:** Exercise 5.2: Check the viewer with the built-in Playwright server
 
 <details>
 <summary>Show how to capture viewer screenshots with Playwright</summary>
