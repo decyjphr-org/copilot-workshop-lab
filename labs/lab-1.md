@@ -312,7 +312,7 @@ Personal instructions follow you across repositories.
 1. In Copilot Chat on GitHub.com, ask `Show me how to read a JSON file`.
 
 > [!IMPORTANT]
-> ✅ **Checkpoint:** The answer is in TypeScript, runs from the command line, and contains none of the banned phrases. You'll reuse these instructions in [Exercise 4.5](lab-4.md#exercise-45-see-personal-instructions-shape-agent-output).
+> ✅ **Checkpoint:** The answer is in TypeScript, runs from the command line, and contains none of the banned phrases. You'll reuse these instructions in [Exercise 4.5](lab-4.md#-stretch-goal-exercise-45-see-personal-instructions-shape-agent-output).
 
 > [!TIP]
 > The Copilot app also has global **App instructions** (app settings → **Sessions** → "Instructions"). They apply only in the app.
