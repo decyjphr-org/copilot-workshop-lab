@@ -67,6 +67,7 @@ The Tech Specs page also covers the chip, cameras, battery, modem, and a diagram
    see attached
    ```
 
+1. Provde the sample pictures from the sample app design below
 1. Review the plan. Push back on anything that ignores the repository instructions. Then approve it.
 1. Use the **Run** script to watch progress in the integrated browser. Iterate until the app meets the acceptance criteria. If no Run script is configured, use [Exercise 1.6](lab-1.md#-troubleshooting-exercise-16-if-the-app-doesnt-open-in-a-browser-configure-it-to-run-the-viewer) or start `npm run dev` in a terminal and open its local URL.
 
