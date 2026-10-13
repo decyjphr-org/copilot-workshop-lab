@@ -2,13 +2,13 @@
 
 **Goal:** Harden the preloaded agent, build team agents in `common-agents`, use them from the viewer repo, add a personal agent, and design a multi-agent workflow.
 
-**Repo:** `common-agents` · **Surface:** CLI, Copilot app, GitHub.com
+**Repo:** `common-agents` · **Surface:** VS Code, CLI, Copilot app, GitHub.com
 
 ### Exercise 4.1: Harden the `code-explainer` agent
 
 The preloaded `code-explainer` agent says "Do not edit code", but it has no `tools` list, so it can use every tool, including edit and shell. Instructions ask for behavior; the `tools` list enforces it.
 
-1. Open `~/projects/common-agents/.github/agents/code-explainer.agent.md` and look at three problems:
+1. In **VS Code**, open `~/projects/common-agents/.github/agents/code-explainer.agent.md` and look at three problems:
 
    * `tools` is commented out, so every tool is allowed.
    * The `description` is a persona ("You are an expert..."), not a statement of what the agent does and when to pick it. Copilot uses the description to choose agents.
