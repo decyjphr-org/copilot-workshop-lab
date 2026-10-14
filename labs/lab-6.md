@@ -44,13 +44,13 @@ gh repo create YOUR-ORG/iphone-duo-viewer --private --source=. --remote=origin -
      "hooks": {
        "preToolUse": [{
          "type": "command",
-         "matcher": "bash|edit|create",
+         "matcher": "bash|edit|create|apply_patch",
          "bash": "./.github/hooks/guard.sh",
          "timeoutSec": 10
        }],
        "postToolUse": [{
          "type": "command",
-         "matcher": "edit|create",
+         "matcher": "edit|create|apply_patch",
          "bash": "./.github/hooks/format.sh"
        }]
      }
@@ -76,7 +76,7 @@ gh repo create YOUR-ORG/iphone-duo-viewer --private --source=. --remote=origin -
      bash)
        echo "$ARGS" | grep -Eq 'rm -rf|git push (-f|--force)' \
          && deny "Blocked by guardrails: destructive shell command" ;;
-     edit|create)
+     edit|create|apply_patch)
        echo "$ARGS" | grep -Eq '\.env|src/specs\.ts' \
          && deny "Blocked by guardrails: .env files and src/specs.ts are protected" ;;
    esac
