@@ -200,9 +200,9 @@ The Copilot CLI loads agents from two places: `WORKSPACE/.github/agents/` (proje
 > [!WARNING]
 > The docs list both agent locations, but they don't mention symbolic links. If the agents don't appear, remove the link (`rm ~/.copilot/agents`, or on Windows `rmdir "%USERPROFILE%\.copilot\agents"`), create a normal folder, and copy the `.agent.md` files into it instead. Lab 7 replaces this step with a plugin.
 
-#### Step 4: Verify from outside the repository
-
 Step 3 is optional and appears in the stretch goals at the end. You can verify skills and agents without sharing instruction files.
+
+#### Step 4: Verify from outside the repository
 
 ##### VS Code
 
