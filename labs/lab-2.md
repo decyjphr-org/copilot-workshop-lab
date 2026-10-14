@@ -79,7 +79,7 @@ The repository-wide `.github/copilot-instructions.md` is already preloaded. Read
    - Defensive programming: null/undefined access
    ````
 
-   Commit the new prompt on your original branch **before** creating the test branch:
+ 1.  Commit the new prompt on your original branch **before** creating the test branch:
 
    ```bash
    git add .github/prompts/review-code.prompt.md
