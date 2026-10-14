@@ -62,8 +62,15 @@ The Tech Specs page also covers the chip, cameras, battery, modem, and a diagram
 
    see attached
    ```
+### Sample app
 
-1. Provide the sample pictures from the sample app design below
+Attach these screenshots of a finished sample app:
+
+<img width="419" height="387" alt="image-20260921090605126" src="https://github.com/user-attachments/assets/cad553fe-5f60-452f-8b4c-7af082121731" />
+
+<img width="678" height="626" alt="image-20260921090535726" src="https://github.com/user-attachments/assets/d299fcd1-c142-4d8f-82cc-051bbd3982ce" />
+
+1. Provide the sample pictures from the sample app design
 1. Review the plan. Push back on anything that ignores the repository instructions. Then approve it.
 1. Use the **Run** script to watch progress in the integrated browser. Iterate until the app meets the acceptance criteria. If no Run script is configured, use [Exercise 1.6](lab-1.md#-troubleshooting-exercise-16-if-the-app-doesnt-open-in-a-browser-configure-it-to-run-the-viewer) or start `npm run dev` in a terminal and open its local URL.
 
@@ -82,13 +89,6 @@ The Tech Specs page also covers the chip, cameras, battery, modem, and a diagram
 * [ ] Every mesh is named after the part it represents.
 * [ ] `npm test` passes.
 
-### Sample app
-
-Your facilitator will show screenshots of a finished sample app:
-
-<img width="419" height="387" alt="image-20260921090605126" src="https://github.com/user-attachments/assets/cad553fe-5f60-452f-8b4c-7af082121731" />
-
-<img width="678" height="626" alt="image-20260921090535726" src="https://github.com/user-attachments/assets/d299fcd1-c142-4d8f-82cc-051bbd3982ce" />
 
 ### References
 
