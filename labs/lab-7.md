@@ -60,7 +60,7 @@ You'll **move** the files, not copy them. If the same skill is loaded from both 
 
    > [!NOTE]
    > `git mv` accepts forward slashes on Windows too, so the paths above don't need to change. Windows `mkdir` creates intermediate directories by default, so no `-p` flag is needed.
-
+   
    Because `~/.copilot/agents` links to `.github/agents`, moving the two agents out also removes them from your personal agents. From now on, the plugin provides them.
 
    The result:
@@ -82,6 +82,9 @@ You'll **move** the files, not copy them. If the same skill is loaded from both 
                    ├── readme-specialist.agent.md
                    └── code-explainer.agent.md
    ```
+
+   > [!NOTE]
+   > You should've completed exercises 2.5 to see `issue-triage` skill and exercise 4.2 to see `readme-specialist` custom agent.
 
 1. Create `plugins/workshop-kit/plugin.json`:
 
