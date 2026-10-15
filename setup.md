@@ -37,7 +37,7 @@ password or TAP private; do not post it in this repository or on this page.
 
 ## 3. Complete Lab 0: Prerequisites and setup
 
-Go to [README -> Lab 0: Prerequisites and setup](https://github.com/decyjphr-org/copilot-workshop-lab/blob/main/README.md#lab-0-prerequisites-and-setup)
+Go to [Lab 0: Prerequisites and setup](https://github.com/decyjphr-org/copilot-workshop-lab/blob/main/labs/lab-0.md)
 and complete the exercises before proceeding to Lab 1.
 
 ## 4. Download the workshop slides

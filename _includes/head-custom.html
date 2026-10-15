@@ -1,0 +1,10 @@
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("a[href]").forEach(function (link) {
+      if (link.getAttribute("href").startsWith("#")) return;
+      if (!["http:", "https:"].includes(new URL(link.href).protocol)) return;
+      link.target = "_blank";
+      link.relList.add("noopener", "noreferrer");
+    });
+  });
+</script>
