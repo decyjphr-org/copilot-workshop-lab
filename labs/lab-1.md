@@ -1,5 +1,11 @@
 ## Lab 1: Custom instructions
 
+
+
+https://github.com/user-attachments/assets/2282e38c-85cf-4b81-bb7f-af5d38028879
+
+
+
 **Goal:** Create the `iphone-duo-viewer` repository in the Copilot app, give it a full instruction stack, and confirm which instructions Copilot loads. Add personal and organization instructions on top.
 
 **Repo:** `iphone-duo-viewer` (new, local) · **Surface:** GitHub Copilot app
