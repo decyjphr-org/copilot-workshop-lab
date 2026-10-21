@@ -7,6 +7,9 @@
 > [!IMPORTANT]
 > Prompt files work only in IDEs (VS Code, Visual Studio, JetBrains), and only in the workspace that contains them. The CLI, the Copilot app, and GitHub.com don't support them. VS Code has also deprecated prompt files for Agent Host sessions; they still work with the Local agent. This lab ends by moving a prompt file to a skill for that reason.
 
+https://github.com/user-attachments/assets/dfaa9b9a-0bb1-4a71-830b-3ee242c882f8
+
+
 Open `~/projects/common-agents` in VS Code before you start.
 
    ```bash
