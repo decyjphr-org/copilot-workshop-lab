@@ -4,6 +4,11 @@
 
 **Repo:** `common-agents` · **Surface:** VS Code, CLI, Copilot app, GitHub.com
 
+
+
+https://github.com/user-attachments/assets/f8dd1390-064e-4942-8a2c-0f3dcf133598
+
+
 ### Exercise 4.1: Harden the `code-explainer` agent
 
 The preloaded `code-explainer` agent says "Do not edit code", but it has no `tools` list, so it can use every tool, including edit and shell. Instructions ask for behavior; the `tools` list enforces it.

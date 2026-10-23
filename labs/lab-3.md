@@ -4,6 +4,11 @@
 
 **Repo:** `common-agents` · **Surface:** VS Code or CLI or Copilot app
 
+
+
+https://github.com/user-attachments/assets/4c7877b1-bfa5-40c3-937e-fdf42ce8ab13
+
+
 ### Exercise 3.1: Take apart the `release-validator` skill
 
 `release-validator` came preloaded. It's the reference example of how to build a skill.

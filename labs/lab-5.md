@@ -4,6 +4,11 @@
 
 **Repo:** `iphone-duo-viewer` · **Surface:** CLI, Copilot app
 
+
+
+https://github.com/user-attachments/assets/32a5d4ca-9685-4c0a-bbc4-c55223193471
+
+
 ### Exercise 5.1: Setup Context7 MCP
 
 1. Open the Context7 page in the GitHub MCP Registry: [github.com/mcp/upstash/context7](https://github.com/mcp/upstash/context7).

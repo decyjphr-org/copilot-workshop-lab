@@ -4,6 +4,9 @@
 
 **Repo:** `iphone-duo-viewer` (new, local) · **Surface:** GitHub Copilot app
 
+https://github.com/user-attachments/assets/2282e38c-85cf-4b81-bb7f-af5d38028879
+
+
 ### Exercise 1.1: Create the local repository and open it in the Copilot app
 
 1. Create an empty Git repository:
