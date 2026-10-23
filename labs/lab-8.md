@@ -4,6 +4,10 @@
 
 **Repo:** `iphone-duo-viewer` · **Surface:** Copilot app (CLI for checks)
 
+
+https://github.com/user-attachments/assets/43b0cf94-6cf6-4d0f-af5e-9ab60e937787
+
+
 ### Background
 
 Apple announced the iPhone Duo at Apple Park on September 9, 2026, alongside the iPhone 18 Pro and iPhone 18 Pro Max. It's scheduled for release on October 23, 2026. Use the official Tech Specs page as the source of truth for dimensions:
