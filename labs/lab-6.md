@@ -1,8 +1,9 @@
 ## Lab 6: Hooks
+> [!NOTE]
+> If you skipped the previous exercises, update the local copy of `common-agents` from branch `lab-5-solution` in [common-agents](https://github.com/decyjphr-org/common-agents) repo and local copy of `iphone-duo-viewer` from branch `lab-5-solution` in [iphone-duo-viewer](https://github.com/decyjphr-org/iphone-duo-viewer) repo.
 
 <details>
 <summary>🚀 Stretch goal: show the optional hooks lab</summary>
-
 **Goal:** Enforce guardrails in the viewer repo with a `preToolUse` hook and format files automatically with a `postToolUse` hook. Hooks are deterministic: they run every time, whatever the model decides.
 
 **Repo:** `iphone-duo-viewer` · **Surface:** CLI, cloud agent
