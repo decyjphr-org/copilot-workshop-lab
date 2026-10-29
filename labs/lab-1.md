@@ -1,4 +1,6 @@
 ## Lab 1: Custom instructions
+> [!NOTE]
+> If you skipped the previous exercises, update the local copy of `common-agents` from branch `lab-0-solution` in [common-agents](https://github.com/decyjphr-org/common-agents) repo.
 
 **Goal:** Create the `iphone-duo-viewer` repository in the Copilot app, give it a full instruction stack, and confirm which instructions Copilot loads. Add personal and organization instructions on top.
 

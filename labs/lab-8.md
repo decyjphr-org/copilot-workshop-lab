@@ -1,4 +1,6 @@
 ## 🚀 Lab 8: Keystone: iPhone Duo knolling viewer
+> [!NOTE]
+> If you skipped the previous exercises, update the local copy of `common-agents` from branch `lab-7-solution` in [common-agents](https://github.com/decyjphr-org/common-agents) repo and local copy of `iphone-duo-viewer` from branch `lab-7-solution` in [iphone-duo-viewer](https://github.com/decyjphr-org/iphone-duo-viewer) repo.
 
 **Goal:** Use everything from Labs 1–7 to turn the viewer scaffold into an interactive 3D model of the iPhone Duo. It has an exploded view and a *knolling* mode that lays every component flat in an aligned, non-overlapping grid.
 

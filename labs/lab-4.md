@@ -1,4 +1,6 @@
 ## Lab 4: Custom agents
+> [!NOTE]
+> If you skipped the previous exercises, update the local copy of `common-agents` from branch `lab-3-solution` in [common-agents](https://github.com/decyjphr-org/common-agents) repo and local copy of `iphone-duo-viewer` from branch `lab-3-solution` in [iphone-duo-viewer](https://github.com/decyjphr-org/iphone-duo-viewer) repo.
 
 **Goal:** Harden the preloaded agent, build team agents in `common-agents`, use them from the viewer repo, add a personal agent, and design a multi-agent workflow.
 
