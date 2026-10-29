@@ -2,6 +2,10 @@
 
 **Goal:** Confirm your plan, sign in to every client, import and clone `common-agents`, and connect it to your personal Copilot configuration.
 
+
+https://github.com/user-attachments/assets/0c2d7af8-c89b-4014-9092-ce2aba1f467f
+
+
 ### Exercise 0.1: Verify your plan tier
 
 1. Go to [**github.com → Settings → Billing and licensing**](https://github.com/settings/copilot/features).
