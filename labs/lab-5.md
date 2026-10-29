@@ -1,4 +1,6 @@
 ## Lab 5: MCP servers
+> [!NOTE]
+> If you skipped the previous exercises, update the local copy of `common-agents` from branch `lab-4-solution` in [common-agents](https://github.com/decyjphr-org/common-agents) repo and local copy of `iphone-duo-viewer` from branch `lab-4-solution` in [iphone-duo-viewer](https://github.com/decyjphr-org/iphone-duo-viewer) repo.
 
 **Goal:** Give the viewer a global MCP configuration so every contributor gets up-to-date three.js documentation, and use the CLI's built-in browser automation to check the viewer.
 
