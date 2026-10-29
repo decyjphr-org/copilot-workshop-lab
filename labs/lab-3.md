@@ -1,4 +1,6 @@
 ## Lab 3: Agent skills
+> [!NOTE]
+> If you skipped the previous exercises, update the local copy of `common-agents` from branch `lab-2-solution` in [common-agents](https://github.com/decyjphr-org/common-agents) repo and local copy of `iphone-duo-viewer` from branch `lab-2-solution` in [iphone-duo-viewer](https://github.com/decyjphr-org/iphone-duo-viewer) repo.
 
 **Goal:** Study a well-built skill that bundles instructions, a script, reference material, and a template. Then build your own with `/create-skill`, and install community skills.
 
