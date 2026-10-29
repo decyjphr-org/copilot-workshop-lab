@@ -1,4 +1,6 @@
 ## Lab 2: Prompt files
+> [!NOTE]
+> If you skipped the previous exercises, update the local copy of `common-agents` from branch `lab-1-solution` in [common-agents](https://github.com/decyjphr-org/common-agents) repo and local copy of `iphone-duo-viewer` from branch `lab-1-solution` in [iphone-duo-viewer](https://github.com/decyjphr-org/iphone-duo-viewer) repo.
 
 **Goal:** Build reusable prompt files in `common-agents`, run them in VS Code, see where they stop working, and turn the most useful one into a skill that every repository can use.
 
